@@ -462,7 +462,7 @@ namespace LlockhamIndustries.Decals
 
             //Foldout
             Rect Foldout = new Rect(12, 13, 10, 10);
-            if (Event.current.type == EventType.mouseDown && Event.current.button == 0 && Foldout.Contains(Event.current.mousePosition))
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && Foldout.Contains(Event.current.mousePosition))
             {
                 foldout = !foldout;
                 Event.current.Use();
@@ -471,7 +471,7 @@ namespace LlockhamIndustries.Decals
 
             //Deselect
             Rect Close = new Rect(Rect.width - 24, 13, 8, 8);
-            if (Event.current.type == EventType.mouseDown && Event.current.button == 0 && Close.Contains(Event.current.mousePosition))
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && Close.Contains(Event.current.mousePosition))
             {
                 if (EditorUtility.DisplayDialog("Clear Projection?", "Are you sure you want to change projection? All instanced variable changes will be lost.", "Continue", "Cancel"))
                 {
@@ -554,7 +554,7 @@ namespace LlockhamIndustries.Decals
 
                 //Reset
                 Rect Reset = new Rect(Area.width - 20, Area.y + 6, 12, 12);
-                if (Event.current.type == EventType.mouseDown && Event.current.button == 0 && Reset.Contains(Event.current.mousePosition))
+                if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && Reset.Contains(Event.current.mousePosition))
                 {
                     source.ResetProperties();
                     Event.current.Use();

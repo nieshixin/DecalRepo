@@ -746,11 +746,11 @@ namespace LlockhamIndustries.Decals
                 }
 
                 //Virtual reality settings
-                if (VRSettings.enabled)
+                if (UnityEngine.XR.XRSettings.enabled)
                 {
-                    debug += "\r\nVirtualReality : " + VRSettings.isDeviceActive + "\r\n";
-                    debug += "VR API : " + VRSettings.loadedDeviceName + "\r\n";
-                    debug += "VR device : " + VRDevice.model + "\r\n";
+                    debug += "\r\nVirtualReality : " + UnityEngine.XR.XRSettings.isDeviceActive + "\r\n";
+                    debug += "VR API : " + UnityEngine.XR.XRSettings.loadedDeviceName + "\r\n";
+                    debug += "VR device : " + UnityEngine.XR.XRDevice.model + "\r\n";
 
                     #if UNITY_EDITOR
                     debug += "Stereo rendering path : " + (System.Settings.SinglePassVR? "SinglePass" : "MultiPass") + "\r\n";
@@ -1146,7 +1146,7 @@ namespace LlockhamIndustries.Decals
         private bool VRCamera(Camera Source)
         {
             if (Source.cameraType == CameraType.SceneView || Source.cameraType == CameraType.Preview) return false;
-            return (VRSettings.enabled && Source.stereoTargetEye != StereoTargetEyeMask.None);
+            return (UnityEngine.XR.XRSettings.enabled && Source.stereoTargetEye != StereoTargetEyeMask.None);
         }
 
         private void UpdateRenderingMethod(Camera Camera, DynamicDecals System)
@@ -1155,7 +1155,7 @@ namespace LlockhamIndustries.Decals
             ShaderReplacement shaderReplacement = Standard;
 
             //If rendering VR, use TriplePass replacement
-            if (VRSettings.enabled && Camera.stereoTargetEye != StereoTargetEyeMask.None) shaderReplacement = VR;
+            if (UnityEngine.XR.XRSettings.enabled && Camera.stereoTargetEye != StereoTargetEyeMask.None) shaderReplacement = VR;
 
             //If on old device, use classic replacement
             if (Camera.cameraType != CameraType.SceneView && Camera.cameraType != CameraType.Preview && (SystemInfo.graphicsShaderLevel < 30 || SystemInfo.supportedRenderTargetCount < 2)) shaderReplacement = ShaderReplacement.Classic;
@@ -1243,8 +1243,8 @@ namespace LlockhamIndustries.Decals
             //VR cameras use eye texture values
             if (VRCamera(Camera))
             {
-                width = (System.Settings.SinglePassVR) ? VRSettings.eyeTextureWidth * 2 : VRSettings.eyeTextureWidth;
-                height = VRSettings.eyeTextureHeight;
+                width = (System.Settings.SinglePassVR) ? UnityEngine.XR.XRSettings.eyeTextureWidth * 2 : UnityEngine.XR.XRSettings.eyeTextureWidth;
+                height = UnityEngine.XR.XRSettings.eyeTextureHeight;
             }
 
             //If the size has changed, grab new render textures of the new size
@@ -1264,7 +1264,7 @@ namespace LlockhamIndustries.Decals
                     depthBuffer = RenderTexture.GetTemporary(Width, Height, 24, RenderTextureFormat.RGFloat);
 
                     //VR compatible, get eye version as required
-                    if (VRCamera(Camera) && System.Settings.SinglePassVR) depthEye = RenderTexture.GetTemporary(VRSettings.eyeTextureWidth, VRSettings.eyeTextureHeight, 24, RenderTextureFormat.RGFloat);
+                    if (VRCamera(Camera) && System.Settings.SinglePassVR) depthEye = RenderTexture.GetTemporary(UnityEngine.XR.XRSettings.eyeTextureWidth, UnityEngine.XR.XRSettings.eyeTextureHeight, 24, RenderTextureFormat.RGFloat);
                     break;
 
                 case ShaderReplacement.SinglePass:
@@ -1290,9 +1290,9 @@ namespace LlockhamIndustries.Decals
                     //VR compatible, get eye version as required
                     if (VRCamera(Camera) && System.Settings.SinglePassVR)
                     {
-                        if (Camera.actualRenderingPath == RenderingPath.DeferredShading) depthEye = RenderTexture.GetTemporary(VRSettings.eyeTextureWidth, VRSettings.eyeTextureHeight, 24, System.depthFormat);
-                        normalEye = RenderTexture.GetTemporary(VRSettings.eyeTextureWidth, VRSettings.eyeTextureHeight, 24, System.normalFormat);
-                        maskEye = RenderTexture.GetTemporary(VRSettings.eyeTextureWidth, VRSettings.eyeTextureHeight, 24, System.maskFormat);
+                        if (Camera.actualRenderingPath == RenderingPath.DeferredShading) depthEye = RenderTexture.GetTemporary(UnityEngine.XR.XRSettings.eyeTextureWidth, UnityEngine.XR.XRSettings.eyeTextureHeight, 24, System.depthFormat);
+                        normalEye = RenderTexture.GetTemporary(UnityEngine.XR.XRSettings.eyeTextureWidth, UnityEngine.XR.XRSettings.eyeTextureHeight, 24, System.normalFormat);
+                        maskEye = RenderTexture.GetTemporary(UnityEngine.XR.XRSettings.eyeTextureWidth, UnityEngine.XR.XRSettings.eyeTextureHeight, 24, System.maskFormat);
                     }
                     break;
 
@@ -1362,15 +1362,15 @@ namespace LlockhamIndustries.Decals
                         //Position
                         if (Source.transform.parent != null)
                         {
-                            Renderer.transform.position = Source.transform.parent.TransformPoint(InputTracking.GetLocalPosition(VRNode.LeftEye));
+                            Renderer.transform.position = Source.transform.parent.TransformPoint(UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.LeftEye));
                         }
                         else
                         {
-                            Renderer.transform.position = InputTracking.GetLocalPosition(VRNode.LeftEye);
+                            Renderer.transform.position = UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.LeftEye);
                         }
                         
                         //Rotation
-                        Renderer.transform.rotation = Source.transform.rotation * InputTracking.GetLocalRotation(VRNode.LeftEye);
+                        Renderer.transform.rotation = Source.transform.rotation * UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.LeftEye);
 
                         //Projection matrix
                         Renderer.projectionMatrix = Source.GetStereoProjectionMatrix(Camera.StereoscopicEye.Left);
@@ -1391,7 +1391,7 @@ namespace LlockhamIndustries.Decals
                         if (Source.transform.parent != null)
                         {
                             //Position
-                            Renderer.transform.position = Source.transform.parent.TransformPoint(InputTracking.GetLocalPosition(VRNode.RightEye));
+                            Renderer.transform.position = Source.transform.parent.TransformPoint(UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.RightEye));
 
                             //View matrix
                             Matrix4x4 worldToCamera = Source.worldToCameraMatrix;
@@ -1401,7 +1401,7 @@ namespace LlockhamIndustries.Decals
                         else
                         {
                             //Position
-                            Renderer.transform.position = InputTracking.GetLocalPosition(VRNode.RightEye);
+                            Renderer.transform.position = UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.RightEye);
 
                             //View matrix
                             Matrix4x4 worldToCamera = Source.worldToCameraMatrix;
@@ -1410,7 +1410,7 @@ namespace LlockhamIndustries.Decals
                         }
 
                         //Rotation
-                        Renderer.transform.rotation = Source.transform.rotation * InputTracking.GetLocalRotation(VRNode.RightEye);
+                        Renderer.transform.rotation = Source.transform.rotation * UnityEngine.XR.InputTracking.GetLocalRotation(UnityEngine.XR.XRNode.RightEye);
 
                         //Projection matrix
                         Renderer.projectionMatrix = Source.GetStereoProjectionMatrix(Camera.StereoscopicEye.Right);
@@ -1574,7 +1574,7 @@ namespace LlockhamIndustries.Decals
             Target.transform.rotation = Source.transform.rotation;
 
             //Fov and ranges
-            if (!VRSettings.enabled) Target.fieldOfView = Source.fieldOfView;
+            if (!UnityEngine.XR.XRSettings.enabled) Target.fieldOfView = Source.fieldOfView;
             Target.nearClipPlane = Source.nearClipPlane;
             Target.farClipPlane = Source.farClipPlane;
             Target.rect = new Rect(0, 0, 1, 1);

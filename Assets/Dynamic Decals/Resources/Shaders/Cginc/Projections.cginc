@@ -1,3 +1,5 @@
+// Upgrade NOTE: upgraded instancing buffer 'MyProperties' to new syntax.
+
 //Includes
 #include "UnityCG.cginc"
 #include "UnityInstancing.cginc"
@@ -22,14 +24,20 @@ uniform sampler2D _MaskBuffer_0;
 uniform sampler2D_float _CustomDepthNormalMaskTexture;
 
 //Instanced parameters
-UNITY_INSTANCING_CBUFFER_START (MyProperties)
+UNITY_INSTANCING_BUFFER_START (MyProperties)
 UNITY_DEFINE_INSTANCED_PROP (float4, _Color)
+#define _Color_arr MyProperties
 UNITY_DEFINE_INSTANCED_PROP (float, _Multiplier)
+#define _Multiplier_arr MyProperties
 UNITY_DEFINE_INSTANCED_PROP (float4, _EmissionColor)
+#define _EmissionColor_arr MyProperties
 UNITY_DEFINE_INSTANCED_PROP (float4, _TilingOffset)
+#define _TilingOffset_arr MyProperties
 UNITY_DEFINE_INSTANCED_PROP (float4, _MaskLayers)
+#define _MaskLayers_arr MyProperties
 UNITY_DEFINE_INSTANCED_PROP (float, _MaskBase)
-UNITY_INSTANCING_CBUFFER_END
+#define _MaskBase_arr MyProperties
+UNITY_INSTANCING_BUFFER_END(MyProperties)
 
 //Shader parameters
 sampler2D _MainTex;
@@ -215,7 +223,7 @@ half2 DecalUVs(float3 WorldPos)
 	//Calculate local uvs, projecting along Z, so using xy position as co-ordinates
 	float2 UnscaledUVs = float2(opos.xy + 0.5);
 
-	float4 tilingOffset = UNITY_ACCESS_INSTANCED_PROP(_TilingOffset);
+	float4 tilingOffset = UNITY_ACCESS_INSTANCED_PROP(_TilingOffset_arr, _TilingOffset);
 
 	return (UnscaledUVs * tilingOffset.xy) + tilingOffset.zw;
 }
@@ -239,8 +247,8 @@ half2 OmniUVs(float3 WorldPos)
 //Clip masking
 void ClipMasking(half4 maskBuffer)
 {
-	half mask = UNITY_ACCESS_INSTANCED_PROP(_MaskBase);
-	half4 maskLayers = UNITY_ACCESS_INSTANCED_PROP(_MaskLayers);
+	half mask = UNITY_ACCESS_INSTANCED_PROP(_MaskBase_arr, _MaskBase);
+	half4 maskLayers = UNITY_ACCESS_INSTANCED_PROP(_MaskLayers_arr, _MaskLayers);
 
 	mask += maskBuffer.x * (maskLayers.x * 2 - 1);
 	mask += maskBuffer.y * (maskLayers.y * 2 - 1);
@@ -368,7 +376,7 @@ half NormalOcclusion(float2 localUvs)
 half AlbedoOcclusion(float2 localUvs)
 {
 	//Calculate alpha
-	float alpha = UNITY_ACCESS_INSTANCED_PROP(_Color).a;
+	float alpha = UNITY_ACCESS_INSTANCED_PROP(_Color_arr, _Color).a;
 
 	#if !defined(SHADER_API_D3D11_9X)
 	alpha *= tex2Dlod(_MainTex, float4(localUvs, 0, 0)).a;
@@ -389,7 +397,7 @@ half AlbedoOcclusion(float2 localUvs)
 half ShapeOcclusion(float2 localUvs)
 {
 	//Calculate alpha
-	float alpha = UNITY_ACCESS_INSTANCED_PROP(_Multiplier);
+	float alpha = UNITY_ACCESS_INSTANCED_PROP(_Multiplier_arr, _Multiplier);
 
 	#if !defined(SHADER_API_D3D11_9X)
 	alpha *= tex2Dlod(_MainTex, float4(localUvs, 0, 0)).a;
@@ -410,7 +418,7 @@ half ShapeOcclusion(float2 localUvs)
 
 half3 Albedo(float2 localUvs)
 {
-	half3 color = UNITY_ACCESS_INSTANCED_PROP (_Color).rgb;
+	half3 color = UNITY_ACCESS_INSTANCED_PROP (_Color_arr, _Color).rgb;
 	return color * tex2D(_MainTex, localUvs).rgb;
 }
 half4 SpecGloss(float2 localUvs)
@@ -454,7 +462,7 @@ half3 WorldNormal(float2 localUvs, float3x3 Surface2WorldTranspose, float scale)
 }
 half3 EmissionAlpha(float2 localUvs)
 {
-	half4 color = UNITY_ACCESS_INSTANCED_PROP(_EmissionColor);
+	half4 color = UNITY_ACCESS_INSTANCED_PROP(_EmissionColor_arr, _EmissionColor);
 	half4 Emission = tex2D(_EmissionMap, localUvs) * color;
 	return Emission.rgb;
 }

@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 92154898526810830}
   - component: {fileID: 124734962339956676}
   - component: {fileID: 81991540381767724}
-  - component: {fileID: 114674787133818034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -233,11 +232,11 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!23 &23643242135326946
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -247,6 +246,7 @@ MeshRenderer:
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -262,6 +262,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -290,7 +291,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!81 &81991540381767724
 AudioListener:
@@ -358,12 +359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0531ca5e68782684f9475c91dd997af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookSensitivity: 6
+  lookSensitivity: 5
   moveAcceleration: 0.8
-  moveSpeed: 6
-  jumpAcceleration: 1
+  moveSpeed: 3
+  jumpAcceleration: 3
   cameraControlled: {fileID: 20022464745038044}
-  cameraSmooth: 0.1
+  cameraSmooth: 0
   cameraOffset: {x: 0, y: 2, z: -5}
   weapon: {fileID: 0}
 --- !u!114 &114510395443465736
@@ -403,20 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc368ec3f4097448a4c319e93e55b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114674787133818034
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291262183372726}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe22c8d145c6974db83420d62d86173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HrotateSpeed: 10
-  VrotateSpeed: 10
-  lookAt: {fileID: 4440277032815338}
 --- !u!114 &114807750970488398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,7 +447,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827006079815132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b16b0d1e2fae0e0469a7a7e4aa0baef2, type: 3}
   m_Name: 

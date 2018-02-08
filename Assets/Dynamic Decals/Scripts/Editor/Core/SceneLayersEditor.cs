@@ -42,7 +42,7 @@ namespace LlockhamIndustries.Decals
 
             //Reset
             Rect Reset = new Rect(Area.width - 20, 6, 12, 12);
-            if (Event.current.type == EventType.mouseDown && Event.current.button == 0 && Reset.Contains(Event.current.mousePosition))
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && Reset.Contains(Event.current.mousePosition))
             {
                 ResetLayers(Layers);
                 Event.current.Use();

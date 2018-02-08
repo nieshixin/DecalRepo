@@ -114,7 +114,7 @@ namespace LlockhamIndustries.Decals
                     Handles.DrawWireDisc(hit.point, hit.normal, 1);
 
                     //Left click
-                    if (Event.current.type == EventType.mouseDown && Event.current.button == 0)
+                    if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
                     {
                         Draw(hit.point, Quaternion.LookRotation(-hit.normal), hit.collider.transform, hit.collider.gameObject.layer);
                         Event.current.Use();

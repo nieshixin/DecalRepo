@@ -13,7 +13,7 @@ namespace LlockhamIndustries.VR
         public Vector3 offset;
 
         private Rigidbody rb;
-        private VRNode node;
+        private UnityEngine.XR.XRNode node;
 
         void Start()
         {
@@ -25,20 +25,20 @@ namespace LlockhamIndustries.VR
             switch (target)
             {
                 case VRTarget.Head:
-                    node = VRNode.Head;
+                    node = UnityEngine.XR.XRNode.Head;
                     break;
                 case VRTarget.LeftHand:
-                    node = VRNode.LeftHand;
+                    node = UnityEngine.XR.XRNode.LeftHand;
                     break;
                 case VRTarget.RightHand:
-                    node = VRNode.RightHand;
+                    node = UnityEngine.XR.XRNode.RightHand;
                     break;
             }
         }
         private void FixedUpdate()
         {
             //Calculate rotation
-            Quaternion rot = transform.parent.rotation * InputTracking.GetLocalRotation(node);
+            Quaternion rot = transform.parent.rotation * UnityEngine.XR.InputTracking.GetLocalRotation(node);
 
             if (target == VRTarget.Head)
             {
@@ -54,7 +54,7 @@ namespace LlockhamIndustries.VR
             }
 
             //Calculate position
-            Vector3 pos = transform.parent.position + InputTracking.GetLocalPosition(node) + (rot * offset);
+            Vector3 pos = transform.parent.position + UnityEngine.XR.InputTracking.GetLocalPosition(node) + (rot * offset);
 
             //If we have a playspace, clamp to bounds
             if (playspace != null) pos = playspace.ClampNode(pos);
