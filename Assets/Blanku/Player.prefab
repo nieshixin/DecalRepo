@@ -89,11 +89,9 @@ GameObject:
   - component: {fileID: 4440277032815338}
   - component: {fileID: 136174532892150130}
   - component: {fileID: 54973437750197820}
-  - component: {fileID: 114368328927437326}
   - component: {fileID: 23643242135326946}
   - component: {fileID: 33450884367605428}
   - component: {fileID: 114370244196027004}
-  - component: {fileID: 114954870363543602}
   m_Layer: 0
   m_Name: Rigi
   m_TagString: Player
@@ -124,15 +122,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331474001793110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.55, y: 0.723, z: 37.35}
+  m_LocalRotation: {x: -0, y: 0.9893439, z: -0, w: 0.14559801}
+  m_LocalPosition: {x: 17.389494, y: 2.28, z: -30.392021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4440277032815338}
   - {fileID: 4701780607157352}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 163.25601, z: 0}
 --- !u!4 &4122637167328940
 Transform:
   m_ObjectHideFlags: 1
@@ -335,19 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc368ec3f4097448a4c319e93e55b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114368328927437326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827006079815132}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59208fabf19dedd47b69c0ee04bde028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  rotateSpeed: 150
 --- !u!114 &114370244196027004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookSensitivity: 5
   moveAcceleration: 0.8
-  moveSpeed: 3
+  moveSpeed: 2
   jumpAcceleration: 3
   cameraControlled: {fileID: 20022464745038044}
   cameraSmooth: 0
@@ -441,17 +426,6 @@ MonoBehaviour:
   frequencyTime: 0
   frequencyDistance: 0
   overlaps: []
---- !u!114 &114954870363543602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827006079815132}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16b0d1e2fae0e0469a7a7e4aa0baef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &124734962339956676
 Behaviour:
   m_ObjectHideFlags: 1
