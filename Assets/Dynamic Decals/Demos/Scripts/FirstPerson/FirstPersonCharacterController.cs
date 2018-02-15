@@ -8,7 +8,7 @@ namespace LlockhamIndustries.Misc
     {
 		[Header("Camera")]
 		public GameObject cam;
-		public GameObject player;
+
 		private bool excuting = false;
 		Space space = Space.Self;
         [Header("Look")]
@@ -80,24 +80,37 @@ namespace LlockhamIndustries.Misc
         {
             //Look Input
             //lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-			if (Input.GetButtonDown ("RotateCamera") && !excuting) {
-				excuting = true;
-				float d = Input.GetAxis ("RotateCamera");
-				//rotate the camera
-				iTween.RotateAdd(cam, iTween.Hash( "x",0f, "y",90*d,"z",0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
 
-				//rotate the player
-				//Debug.Log(player.transform.rotation.eulerAngles.y);
-				transform.Rotate (new Vector3(0f,90f*d,0));
-				//Debug.Log(player.transform.rotation.eulerAngles.y);
-			}
+				if (Input.GetButtonDown ("RotateCamera") && !excuting) {
+					excuting = true;
+					float d = Input.GetAxis ("RotateCamera");
+					//rotate the camera
+					iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 90 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
+
+					//rotate the player
+					//Debug.Log(player.transform.rotation.eulerAngles.y);
+					transform.Rotate (new Vector3 (0f, 90f * d, 0));
+					//Debug.Log(player.transform.rotation.eulerAngles.y);
+				}
+			else if( Input.GetButtonDown ("SlightRotateCamera")&& !excuting){
+					excuting = true;
+					float d = Input.GetAxis ("SlightRotateCamera");
+					//rotate the camera
+					iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 45 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
+
+					//rotate the player
+					//Debug.Log(player.transform.rotation.eulerAngles.y);
+					transform.Rotate (new Vector3 (0f, 45f * d, 0));
+					//Debug.Log(player.transform.rotation.eulerAngles.y);
+				}
+			
             //Move Input
             moveDelta = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
             //Jump Input
             if (Input.GetKey(KeyCode.Space)) jumpInput = true;
             else jumpInput = false;
-        }
+       	 }
 
         //Physics methods
         private void FixedUpdate()
