@@ -55,21 +55,21 @@ MonoBehaviour:
   projection: {fileID: 11400000, guid: 1f2a151855dbecb44b57a0f1c9c9a68e, type: 2}
   properties:
   - name: Albedo
-    nameID: 10
+    nameID: 84
     type: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 0.058823526, b: 0.058823526, a: 1}
     value: 0
-    enabled: 0
+    enabled: 1
   - name: Emission
-    nameID: 81
+    nameID: 59
     type: 2
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0.99264705, g: 0.08028765, b: 0.08028765, a: 1}
     value: 1
-    enabled: 0
+    enabled: 1
   tiling: {x: 1, y: 1}
   offset: {x: 0, y: 0}
   maskMethod: 0
-  masks: 01000000
+  masks: 00000000
   _TilingOffset: 213
   _MaskBase: 214
   _MaskLayers: 215
@@ -106,4 +106,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  fadeLength: 6
+  fadeLength: 60

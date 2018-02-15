@@ -54,7 +54,9 @@ public class FootStep : MonoBehaviour {
 			rot.SetLookRotation (playerRef.transform.forward);
 
 			float agl = Vector3.Angle (hit.normal, Vector3.up);
-			rot *= Quaternion.Euler (agl, 0, 0);
+			//Vector3 cross = Vector3.Cross (hit.normal,Vector3.up);
+			rot *= Quaternion.Euler (3f * agl, 0, 0);
+
 		}
 
 		printer.Print (transform.position, rot, ground.transform);
