@@ -25,6 +25,6 @@ public class FootAnimSpeedUpdater : MonoBehaviour {
 			anim.SetBool ("Walk", false);
 			anim.SetFloat ("Speed", 0f);	
 		}
-		Debug.Log (velocity);
+		//Debug.Log (velocity);
 	}
 }

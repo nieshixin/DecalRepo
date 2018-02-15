@@ -6,6 +6,11 @@ namespace LlockhamIndustries.Misc
     [ExecuteInEditMode]
     public class FirstPersonCharacterController : MonoBehaviour
     {
+		[Header("Camera")]
+		public GameObject cam;
+		public GameObject player;
+		private bool excuting = false;
+		Space space = Space.Self;
         [Header("Look")]
         public float lookSensitivity = 3f;
 
@@ -23,6 +28,7 @@ namespace LlockhamIndustries.Misc
 
         [Header("Weapon")]
         public WeaponController weapon;
+
 
         //Properties
         public bool Grounded
@@ -73,8 +79,18 @@ namespace LlockhamIndustries.Misc
         private void Update()
         {
             //Look Input
-            lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            //lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+			if (Input.GetButtonDown ("RotateCamera") && !excuting) {
+				excuting = true;
+				float d = Input.GetAxis ("RotateCamera");
+				//rotate the camera
+				iTween.RotateAdd(cam, iTween.Hash( "x",0f, "y",90*d,"z",0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
 
+				//rotate the player
+				//Debug.Log(player.transform.rotation.eulerAngles.y);
+				transform.Rotate (new Vector3(0f,90f*d,0));
+				//Debug.Log(player.transform.rotation.eulerAngles.y);
+			}
             //Move Input
             moveDelta = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
@@ -87,9 +103,10 @@ namespace LlockhamIndustries.Misc
         private void FixedUpdate()
         {
             //Update character rotation
-            Vector3 characterRotation = transform.rotation.eulerAngles;
-            characterRotation.y += lookDelta.x * lookSensitivity;
-            transform.rotation = Quaternion.Euler(characterRotation);
+            //Vector3 characterRotation = transform.rotation.eulerAngles;
+           // characterRotation.y += lookDelta.x * lookSensitivity;
+
+            //transform.rotation = Quaternion.Euler(characterRotation);
 
             //Get velocity
             Vector3 velocity = attachedRigidbody.velocity;
@@ -120,10 +137,11 @@ namespace LlockhamIndustries.Misc
             attachedRigidbody.velocity = velocity;
 
             //Update camera rotation
-            cameraRotation.x -= lookDelta.y * lookSensitivity;
-            cameraRotation.y += lookDelta.x * lookSensitivity;
+           // cameraRotation.x -= lookDelta.y * lookSensitivity;
+          //  cameraRotation.y += lookDelta.x * lookSensitivity;
             cameraRotation.z = 0;
 
+			/*
             //Clamp looking too high/low
             if (cameraRotation.x < 200) cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
 
@@ -133,11 +151,12 @@ namespace LlockhamIndustries.Misc
             RecoiledRotation.x -= recoil;
 
             cameraControlled.transform.rotation = Quaternion.Euler(RecoiledRotation);
-
+			*/
             //Update camera position
             cameraControlled.transform.position = Vector3.SmoothDamp(cameraControlled.transform.position, transform.TransformPoint(cameraOffset), ref cameraVelocity, cameraSmooth);
 
             //Update weapon - Called here instead of within its own FixedUpdate because we need to guarentee it's not updated until after the camera position has been
+
             if (weapon != null) weapon.UpdateWeapon();
         }
         private void OnCollisionEnter(Collision collision)
@@ -160,5 +179,9 @@ namespace LlockhamIndustries.Misc
             recoilDuration = RecoilDuration;
             recoilVelocity += RecoilStrength;
         }
+		public void CanExecute(){
+			excuting = false;
+			Debug.Log ("can execute");
+		}
     }
 }
