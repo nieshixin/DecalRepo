@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 114196833642513480}
   m_Layer: 0
   m_Name: Player(ortho)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998234701120580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.65, y: -0.4, z: 49.19}
+  m_LocalPosition: {x: 13.79, y: -0.4, z: 49.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4414602874666852}
@@ -501,7 +501,7 @@ MonoBehaviour:
   cameraControlled: {fileID: 20340380691026294}
   cameraSmooth: 1
   cameraOffset: {x: 0, y: 2, z: -1}
-  weapon: {fileID: 0}
+  lookAngle: 1
 --- !u!114 &114896077232119350
 MonoBehaviour:
   m_ObjectHideFlags: 1

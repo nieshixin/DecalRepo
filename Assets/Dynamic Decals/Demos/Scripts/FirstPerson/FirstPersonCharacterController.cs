@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using UnityEngine.Events;
 
     [ExecuteInEditMode]
     public class FirstPersonCharacterController : MonoBehaviour
@@ -25,7 +26,10 @@ using System.Collections;
         public float cameraSmooth = 0.2f;
         public Vector3 cameraOffset = new Vector3(0, 0.6f, 0);
 
+		[Header("Look Angle")]
+	public int lookAngle = 1; //1 is default angle when player start the level! when anle =5 set it back to 1;
 
+		public LookAngleChangeEvent m_lookAngleChangeEvent;
 
         //Properties
         public bool Grounded
@@ -67,6 +71,11 @@ using System.Collections;
                 //Hide Cursor
                 Cursor.visible = false;
             }
+
+			if (m_lookAngleChangeEvent == null) {
+			m_lookAngleChangeEvent = new LookAngleChangeEvent ();
+
+			}
         }
         private void OnEnable()
         {
@@ -81,7 +90,7 @@ using System.Collections;
 
 				if (Input.GetButtonDown ("RotateCamera") && !excuting) {
 					excuting = true;
-			Debug.Log ("rotated camera");
+		//	Debug.Log ("rotated camera");
 					float d = Input.GetAxis ("RotateCamera");
 			if (d > 0) {
 				d = 1;
@@ -94,6 +103,9 @@ using System.Collections;
 					transform.Rotate (new Vector3 (0f, 90f * d, 0));
 			iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 90 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
 					//Debug.Log(player.transform.rotation.eulerAngles.y);
+
+			//update the look angle state
+			UpdateLookAngleState((int)d);
 				}
 		/*
 			else if( Input.GetButtonDown ("SlightRotateCamera")&& !excuting){
@@ -210,8 +222,20 @@ using System.Collections;
         }
 		public void CanExecute(){
 			excuting = false;
-			Debug.Log ("can execute");
-			Debug.Log( transform.eulerAngles.y);
+		//	Debug.Log ("can execute");
+		//	Debug.Log( transform.eulerAngles.y);
+		}
+
+		public void UpdateLookAngleState(int direction){//1 is clockwise
+		lookAngle += direction;
+		if (lookAngle > 4) {
+			lookAngle = 1;
+			}
+		if (lookAngle < 1) {
+			lookAngle = 4;
+			}
+		//after updating the look angle, broadcast to all event listeners
+		m_lookAngleChangeEvent.Invoke (lookAngle);
 		}
     }
 
