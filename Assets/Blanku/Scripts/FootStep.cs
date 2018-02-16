@@ -11,13 +11,15 @@ public class FootStep : MonoBehaviour {
 	private Quaternion rot;
 	private GameObject ground;
 
-	private GameObject playerRef;
+	private bool runAfterInitializeLock = true;
+	public GameObject playerRef;
 
 
 	void Start () {
 		printer = GetComponent<Printer> ();
 		ground = GameObject.FindGameObjectWithTag ("Ground");
-		playerRef = GameObject.FindGameObjectWithTag("Player");
+		runAfterInitializeLock = false;
+		//playerRef = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -64,7 +66,9 @@ public class FootStep : MonoBehaviour {
 
 	void OnEnable(){
 		//Debug.Log (gameObject.name);
-		MakeFootStep ();
+		if (runAfterInitializeLock == false) {
+			MakeFootStep ();
+		}
 	}
 
 }

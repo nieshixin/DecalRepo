@@ -163,6 +163,8 @@ namespace LlockhamIndustries.Decals
         }
         private void SetScale(ProjectionRenderer Projection, Vector3 Scale)
         {
+			if (projection == null)
+				return;
             Projection.transform.localScale = Scale;
         }
     }

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace LlockhamIndustries.Misc
-{
+
     [ExecuteInEditMode]
     public class FirstPersonCharacterController : MonoBehaviour
     {
@@ -26,8 +25,6 @@ namespace LlockhamIndustries.Misc
         public float cameraSmooth = 0.2f;
         public Vector3 cameraOffset = new Vector3(0, 0.6f, 0);
 
-        [Header("Weapon")]
-        public WeaponController weapon;
 
 
         //Properties
@@ -73,6 +70,7 @@ namespace LlockhamIndustries.Misc
         }
         private void OnEnable()
         {
+			
             if (cameraControlled == null) cameraControlled = Camera.main;
             cameraRotation = cameraControlled.transform.rotation.eulerAngles;
         }
@@ -83,15 +81,21 @@ namespace LlockhamIndustries.Misc
 
 				if (Input.GetButtonDown ("RotateCamera") && !excuting) {
 					excuting = true;
+			Debug.Log ("rotated camera");
 					float d = Input.GetAxis ("RotateCamera");
+			if (d > 0) {
+				d = 1;
+			} if (d < 0) {
+				d = -1;
+			}
 					//rotate the camera
-					iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 90 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
-
 					//rotate the player
 					//Debug.Log(player.transform.rotation.eulerAngles.y);
 					transform.Rotate (new Vector3 (0f, 90f * d, 0));
+			iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 90 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
 					//Debug.Log(player.transform.rotation.eulerAngles.y);
 				}
+		/*
 			else if( Input.GetButtonDown ("SlightRotateCamera")&& !excuting){
 					excuting = true;
 					float d = Input.GetAxis ("SlightRotateCamera");
@@ -103,6 +107,7 @@ namespace LlockhamIndustries.Misc
 					transform.Rotate (new Vector3 (0f, 45f * d, 0));
 					//Debug.Log(player.transform.rotation.eulerAngles.y);
 				}
+				*/
 			
             //Move Input
             moveDelta = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -110,6 +115,9 @@ namespace LlockhamIndustries.Misc
             //Jump Input
             if (Input.GetKey(KeyCode.Space)) jumpInput = true;
             else jumpInput = false;
+
+			///////////////////////////////////////////////
+	
        	 }
 
         //Physics methods
@@ -119,72 +127,80 @@ namespace LlockhamIndustries.Misc
             //Vector3 characterRotation = transform.rotation.eulerAngles;
            // characterRotation.y += lookDelta.x * lookSensitivity;
 
+
+
             //transform.rotation = Quaternion.Euler(characterRotation);
 
-            //Get velocity
-            Vector3 velocity = attachedRigidbody.velocity;
-
-            //Update horizontal velocity
-            Vector3 goalAcceleration = transform.rotation * moveDelta.normalized * moveAcceleration;
-            velocity.x += goalAcceleration.x;
-            velocity.z += goalAcceleration.z;
-
-            //Clamp to max speed
-            Vector2 horizontalVelocity = new Vector2(velocity.x, velocity.z);
-            if (horizontalVelocity.magnitude > moveSpeed)
-            {
-                velocity.x *= moveSpeed / horizontalVelocity.magnitude;
-                velocity.z *= moveSpeed / horizontalVelocity.magnitude;
-            }
-
-            //Grounded
-            grounded = CheckGrounded();
-
-            //Jumping
-            if (jumpInput && grounded)
-            {
-                velocity.y += jumpAcceleration;
-            }
-
-            //Set velocity
-            attachedRigidbody.velocity = velocity;
-
-            //Update camera rotation
-           // cameraRotation.x -= lookDelta.y * lookSensitivity;
-          //  cameraRotation.y += lookDelta.x * lookSensitivity;
-            cameraRotation.z = 0;
-
-			/*
-            //Clamp looking too high/low
-            if (cameraRotation.x < 200) cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
-
-            //Update recoil
-            recoil = Mathf.SmoothDamp(recoil, 0, ref recoilVelocity, recoilDuration);
-            Vector3 RecoiledRotation = cameraRotation;
-            RecoiledRotation.x -= recoil;
-
-            cameraControlled.transform.rotation = Quaternion.Euler(RecoiledRotation);
-			*/
-            //Update camera position
-            cameraControlled.transform.position = Vector3.SmoothDamp(cameraControlled.transform.position, transform.TransformPoint(cameraOffset), ref cameraVelocity, cameraSmooth);
 
             //Update weapon - Called here instead of within its own FixedUpdate because we need to guarentee it's not updated until after the camera position has been
 
-            if (weapon != null) weapon.UpdateWeapon();
+		///             //Get velocity
+		Vector3 velocity = attachedRigidbody.velocity;
+
+		//Update horizontal velocity
+		Vector3 goalAcceleration = transform.rotation * moveDelta.normalized * moveAcceleration;
+		velocity.x += goalAcceleration.x;
+		velocity.z += goalAcceleration.z;
+
+		//Clamp to max speed
+		Vector2 horizontalVelocity = new Vector2(velocity.x, velocity.z);
+		if (horizontalVelocity.magnitude > moveSpeed)
+		{
+			velocity.x *= moveSpeed / horizontalVelocity.magnitude;
+			velocity.z *= moveSpeed / horizontalVelocity.magnitude;
+		}
+
+		//Grounded
+		//grounded = CheckGrounded();
+
+		//Jumping
+		/*
+			if (jumpInput && grounded)
+			{
+				velocity.y += jumpAcceleration;
+			}
+			*/
+
+		//Set velocity
+		attachedRigidbody.velocity = velocity;
+
+		//Update camera rotation
+		// cameraRotation.x -= lookDelta.y * lookSensitivity;
+		//  cameraRotation.y += lookDelta.x * lookSensitivity;
+		cameraRotation.z = 0;
+
+		/*
+            //Clamp looking too high/low
+		if (cameraRotation.x < 200) cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
+
+		//Update recoil
+		recoil = Mathf.SmoothDamp(recoil, 0, ref recoilVelocity, recoilDuration);
+		Vector3 RecoiledRotation = cameraRotation;
+		RecoiledRotation.x -= recoil;
+
+		cameraControlled.transform.rotation = Quaternion.Euler(RecoiledRotation);
+		*/
+		//Update camera position
+		cameraControlled.transform.position = Vector3.SmoothDamp(cameraControlled.transform.position, transform.TransformPoint(cameraOffset), ref cameraVelocity, cameraSmooth);
+
+
+
         }
         private void OnCollisionEnter(Collision collision)
         {
             collisions++;
         }
+		/*
         private void OnCollisionExit(Collision collision)
         {
             collisions--;
         }
-
+*/
         private bool CheckGrounded()
         {
             return (collisions > 0 && Physics.Raycast(transform.position, -Vector3.up, capsuleCollider.bounds.extents.y * 1.4f));
         }
+
 
         //Recoil
         public void ApplyRecoil(float RecoilStrength, float RecoilDuration)
@@ -195,6 +211,7 @@ namespace LlockhamIndustries.Misc
 		public void CanExecute(){
 			excuting = false;
 			Debug.Log ("can execute");
+			Debug.Log( transform.eulerAngles.y);
 		}
     }
-}
+
