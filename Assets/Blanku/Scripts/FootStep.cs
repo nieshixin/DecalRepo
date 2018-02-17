@@ -45,7 +45,7 @@ public class FootStep : MonoBehaviour {
 
 
 		if (hit.normal != Vector3.up) {
-			Debug.Log ("on slope");
+		//	Debug.Log ("on slope");
 
 
 			//overwrite all

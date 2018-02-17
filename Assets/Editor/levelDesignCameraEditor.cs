@@ -14,6 +14,13 @@ public class levelDesignCameraEditor : Editor {
 		if (GUILayout.Button ("Right 90")) {
 			myscript.RotateRight90 ();
 		}
+		if (GUILayout.Button ("Left 45")) {
+			myscript.RotateLeft45 ();
+		}
+		if (GUILayout.Button ("Right 45")) {
+			myscript.RotateRight45 ();
+		}
+
 	}
 
 }
