@@ -14,6 +14,7 @@ public class TeleportChild : MonoBehaviour {
 	 void Start(){
 		playerRef = GameObject.FindGameObjectWithTag ("Player");
 		controller = playerRef.GetComponent<FirstPersonCharacterController> ();
+		//OnCameraRotateCheck ();
 	}
 	public void OnTriggerEnter(Collider other){
 		if( other.tag == "Player"){
@@ -39,8 +40,8 @@ public class TeleportChild : MonoBehaviour {
 
 	 void TeleportPlayer(){
 		//calculate difference between portal
-		Vector3 diff =  targetPoint.position - transform.position;
-		playerRef.transform.position += diff ;
+		Vector3 diff =  targetPoint.position - playerRef.transform.position;
+		playerRef.transform.position += diff;
 		Debug.Log ("teleport");
 		//Time.timeScale = 0f;
 

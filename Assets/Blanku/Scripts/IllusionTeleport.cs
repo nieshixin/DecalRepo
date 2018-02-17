@@ -22,6 +22,8 @@ public class IllusionTeleport : MonoBehaviour {
 		controller = playerRef.GetComponent<FirstPersonCharacterController> ();
 		//register the check function to the player, so everytime the player rotates the camera, this checks the illusion
 		controller.m_lookAngleChangeEvent.AddListener (CheckIllusion);
+
+		A.OnCameraRotateCheck ();
 	}
 
 	// Update is called once per frame
