@@ -27,10 +27,10 @@ using UnityEngine.Events;
         public Vector3 cameraOffset = new Vector3(0, 0.6f, 0);
 
 		[Header("Look Angle")]
-	public int lookAngle = 1; //1 is default angle when player start the level! when anle =5 set it back to 1;
+	public float lookAngle = 1; //1 is default angle when player start the level! when anle =5 set it back to 1;
 
 		public LookAngleChangeEvent m_lookAngleChangeEvent;
-
+		public bool Srotenabled = false;
         //Properties
         public bool Grounded
         {
@@ -99,29 +99,31 @@ using UnityEngine.Events;
 			}
 					//rotate the camera
 					//rotate the player
-					//Debug.Log(player.transform.rotation.eulerAngles.y);
 					transform.Rotate (new Vector3 (0f, 90f * d, 0));
 			iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 90 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
 					//Debug.Log(player.transform.rotation.eulerAngles.y);
 
 			//"oncompleteparams",(int)d,
-
 			//update the look angle state
-			UpdateLookAngleState((int)d);
+			UpdateLookAngleState90(d);
 				}
-		/*
-			else if( Input.GetButtonDown ("SlightRotateCamera")&& !excuting){
+
+			else if( Input.GetButtonDown ("SlightRotateCamera")&& !excuting && Srotenabled){
 					excuting = true;
 					float d = Input.GetAxis ("SlightRotateCamera");
+			if (d > 0) {
+				d = 1f;
+			} if (d < 0) {
+				d = -1f;
+			}
+
+					transform.Rotate (new Vector3 (0f, 45f * d, 0));
 					//rotate the camera
 					iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 45 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
-
 					//rotate the player
-					//Debug.Log(player.transform.rotation.eulerAngles.y);
-					transform.Rotate (new Vector3 (0f, 45f * d, 0));
-					//Debug.Log(player.transform.rotation.eulerAngles.y);
-				}
-				*/
+			UpdateLookAngleState45(d);
+			}
+				
 			
             //Move Input
             moveDelta = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -228,20 +230,37 @@ using UnityEngine.Events;
 		//	Debug.Log( transform.eulerAngles.y);
 		}
 
-		public void UpdateLookAngleState(int direction){//1 is clockwise
+	public void UpdateLookAngleState90(float direction){//1 is clockwise
 		
 
 
 		lookAngle += direction;
-		if (lookAngle > 4) {
-			lookAngle = 1;
-			}
-		if (lookAngle < 1) {
-			lookAngle = 4;
-			}
+		if (lookAngle == 5f)
+			lookAngle = 1f;
+		if (lookAngle == 5.5f)
+			lookAngle = 1.5f;
+		if (lookAngle == 0.5f)
+			lookAngle = 4.5f;
+		if (lookAngle == 0f)
+			lookAngle = 4f;
+
 		//after updating the look angle, broadcast to all event listeners
 		m_lookAngleChangeEvent.Invoke (lookAngle);
 		}
 
+	public void UpdateLookAngleState45(float direction){//1 is clockwise
+
+
+
+		lookAngle += 0.5f*direction;
+		if (lookAngle > 4.5f) {
+			lookAngle = 1;
+		}
+		if (lookAngle < 1f) {
+			lookAngle = 4.5f;
+		}
+		//after updating the look angle, broadcast to all event listeners
+		m_lookAngleChangeEvent.Invoke (lookAngle);
+	}
     }
 

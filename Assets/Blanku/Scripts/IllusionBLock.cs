@@ -26,7 +26,7 @@ public class IllusionBLock : MonoBehaviour {
 		
 	}
 
-	public void CheckIllusion(int lookAngle){
+	public void CheckIllusion(float lookAngle){
 		Debug.Log (lookAngle);
 		thisCol.isTrigger = true;
 		mesh.enabled = false;

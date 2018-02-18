@@ -15,6 +15,9 @@ public class FootStep : MonoBehaviour {
 	public GameObject playerRef;
 
 	Rigidbody rigi;
+
+
+
 	void Start () {
 		printer = GetComponent<Printer> ();
 		ground = GameObject.FindGameObjectWithTag ("Ground");
@@ -38,13 +41,11 @@ public class FootStep : MonoBehaviour {
 
 
 		rot = playerRef.transform.rotation;
-
-		//float ang = Mathf.Rad2Deg*Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
-		//rot *=  Quaternion.Euler(0,0,ang - 90f);
-		//Debug.Log(ang - 90f);
-		//Debug.Log(rot.eulerAngles);
-
 		rot *= Quaternion.Euler (90,0,0);
+
+		//Calculate our rotation
+		//else rot = Vector3.up;
+
 
 		//raycast check perpendicular
 

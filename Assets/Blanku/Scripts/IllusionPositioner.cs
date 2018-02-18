@@ -35,28 +35,29 @@ public class IllusionPositioner : MonoBehaviour {
 		
 	}
 	//very important everytime player rotate the camera, run this func
-	public void CheckIllusion(int lookAngle){
+	public void CheckIllusion(float lookAngle){
 		previousPos = transform.parent.position; 
-
+		/*
 		switch (lookAngle) {
-		case 1:
+		case 1f:
 			
 			iTween.MoveTo (transform.parent.gameObject, iTween.Hash ("position", angle_1_pos, "islocal", true, "time", 0.5f)); 
 			expectedPos = angle_1_pos;
 			break;
-		case 2:
+		case 2f:
 			iTween.MoveTo (transform.parent.gameObject, iTween.Hash ("position", angle_2_pos, "islocal", true, "time", 0.5f)); 
 			expectedPos = angle_2_pos;
 			break;
-		case 3:
+		case 3f:
 			iTween.MoveTo (transform.parent.gameObject, iTween.Hash ("position", angle_3_pos, "islocal", true, "time", 0.5f)); 
 			expectedPos = angle_3_pos;
 			break;
-		case 4:
+		case 4f:
 			iTween.MoveTo (transform.parent.gameObject, iTween.Hash ("position", angle_4_pos, "islocal", true, "time", 0.5f)); 
 			expectedPos = angle_4_pos;
 			break;
 		}
+		*/
 		if (playerInside) {
 			GrabPlayer();
 		}
