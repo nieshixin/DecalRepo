@@ -14,12 +14,15 @@ public class FootStep : MonoBehaviour {
 	private bool runAfterInitializeLock = true;
 	public GameObject playerRef;
 
-
+	Rigidbody rigi;
 	void Start () {
 		printer = GetComponent<Printer> ();
 		ground = GameObject.FindGameObjectWithTag ("Ground");
 		runAfterInitializeLock = false;
 		//playerRef = GameObject.FindGameObjectWithTag("Player");
+		rigi = playerRef.GetComponentInChildren<Rigidbody>();
+
+
 	}
 	
 	// Update is called once per frame
@@ -36,7 +39,13 @@ public class FootStep : MonoBehaviour {
 
 		rot = playerRef.transform.rotation;
 
+		//float ang = Mathf.Rad2Deg*Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+		//rot *=  Quaternion.Euler(0,0,ang - 90f);
+		//Debug.Log(ang - 90f);
+		//Debug.Log(rot.eulerAngles);
+
 		rot *= Quaternion.Euler (90,0,0);
+
 		//raycast check perpendicular
 
 		Ray r;

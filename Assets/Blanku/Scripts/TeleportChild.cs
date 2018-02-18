@@ -9,7 +9,7 @@ public class TeleportChild : MonoBehaviour {
 	[Range(1,2)]
 
 	public bool PlayerInside = false;
-	GameObject playerRef;
+	public GameObject playerRef;
 	FirstPersonCharacterController controller;
 	 void Start(){
 		playerRef = GameObject.FindGameObjectWithTag ("Player");

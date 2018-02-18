@@ -104,6 +104,8 @@ using UnityEngine.Events;
 			iTween.RotateAdd (cam, iTween.Hash ("x", 0f, "y", 90 * d, "z", 0f, "time", 0.5f, "oncomplete", "CanExecute", "oncompletetarget", this.gameObject, "space", Space.World));
 					//Debug.Log(player.transform.rotation.eulerAngles.y);
 
+			//"oncompleteparams",(int)d,
+
 			//update the look angle state
 			UpdateLookAngleState((int)d);
 				}
@@ -221,12 +223,15 @@ using UnityEngine.Events;
             recoilVelocity += RecoilStrength;
         }
 		public void CanExecute(){
-			excuting = false;
+		excuting = false;
 		//	Debug.Log ("can execute");
 		//	Debug.Log( transform.eulerAngles.y);
 		}
 
 		public void UpdateLookAngleState(int direction){//1 is clockwise
+		
+
+
 		lookAngle += direction;
 		if (lookAngle > 4) {
 			lookAngle = 1;
@@ -237,5 +242,6 @@ using UnityEngine.Events;
 		//after updating the look angle, broadcast to all event listeners
 		m_lookAngleChangeEvent.Invoke (lookAngle);
 		}
+
     }
 
