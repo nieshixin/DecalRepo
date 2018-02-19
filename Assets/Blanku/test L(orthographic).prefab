@@ -59,13 +59,13 @@ MonoBehaviour:
     type: 0
     color: {r: 1, g: 0.058823526, b: 0.058823526, a: 1}
     value: 0
-    enabled: 1
+    enabled: 0
   - name: Emission
     nameID: 59
     type: 2
     color: {r: 0.99264705, g: 0.08028765, b: 0.08028765, a: 1}
     value: 1
-    enabled: 1
+    enabled: 0
   tiling: {x: 1, y: 1}
   offset: {x: 0, y: 0}
   maskMethod: 0
@@ -94,16 +94,16 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 328.5017
-      outSlope: 328.5017
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.0071973666
-      value: 0.96392334
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  fadeLength: 60
+  fadeLength: 0.5

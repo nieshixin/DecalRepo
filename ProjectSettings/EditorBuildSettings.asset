@@ -6,11 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Blanku/1.unity
+    path: Assets/Blanku/0.unity
     guid: 2ce33babdf0edb147a650ce8cf70eeb4
+  - enabled: 1
+    path: Assets/Blanku/1.unity
+    guid: 994de1ae7ca08a64ea4164c4e1c551da
   - enabled: 1
     path: Assets/Blanku/2.unity
     guid: e54928a8b3e34f34993aa78870a614cf
   - enabled: 1
     path: Assets/Blanku/3.unity
-    guid: f00697838c1f04e4ab6feb5d9edb18fe
+    guid: 2b0b317e67bc28042893698bbc8c75b1
+  - enabled: 1
+    path: Assets/Blanku/4.unity
+    guid: e0ebda397e73ded40a37de8497399f6d
+  - enabled: 1
+    path: Assets/Blanku/6.unity
+    guid: b5e7907dfa4b874409aa2252037c8766
