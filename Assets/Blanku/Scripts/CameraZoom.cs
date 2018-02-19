@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour {
 
-	Camera cam; 	
+	Camera cam; 
+	public float speed = 0.2f;
 	// Use this for initialization
 	void Start () {
 		cam = GetComponent<Camera> ();
@@ -13,9 +14,12 @@ public class CameraZoom : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetAxis ("Mouse ScrollWheel")>0) {
-			cam.orthographicSize -= 0.2f;
+			cam.orthographicSize -= speed;
+			if (cam.orthographicSize < 1)
+				cam.orthographicSize = 1;
 		}
 		if(Input.GetAxis ("Mouse ScrollWheel")<0)
-			cam.orthographicSize += 0.2f;
+			cam.orthographicSize += speed;
+		
 	}
 }

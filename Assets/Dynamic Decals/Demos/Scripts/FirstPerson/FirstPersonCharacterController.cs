@@ -133,23 +133,17 @@ using UnityEngine.Events;
             if (Input.GetKey(KeyCode.Space)) jumpInput = true;
             else jumpInput = false;
 
-			///////////////////////////////////////////////
-	
-       	 }
-
-        //Physics methods
-        private void FixedUpdate()
-        {
-            //Update character rotation
-            Vector3 characterRotation = transform.rotation.eulerAngles;
-            characterRotation.y += lookDelta.x * lookSensitivity;
+			///////////////////////////////////////////////previously belongs to fixed update
+		//Update character rotation
+		Vector3 characterRotation = transform.rotation.eulerAngles;
+		characterRotation.y += lookDelta.x * lookSensitivity;
 
 
 
-            transform.rotation = Quaternion.Euler(characterRotation);
+		transform.rotation = Quaternion.Euler(characterRotation);
 
 
-            //Update weapon - Called here instead of within its own FixedUpdate because we need to guarentee it's not updated until after the camera position has been
+		//Update weapon - Called here instead of within its own FixedUpdate because we need to guarentee it's not updated until after the camera position has been
 
 		///             //Get velocity
 		Vector3 velocity = attachedRigidbody.velocity;
@@ -183,11 +177,11 @@ using UnityEngine.Events;
 
 		//Update camera rotation
 		// cameraRotation.x -= lookDelta.y * lookSensitivity;
-		  cameraRotation.y += lookDelta.x * lookSensitivity;
+		cameraRotation.y += lookDelta.x * lookSensitivity;
 		cameraRotation.z = 0;
 
 
-            //Clamp looking too high/low
+		//Clamp looking too high/low
 		if (cameraRotation.x < 200) cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
 
 		//Update recoil
@@ -204,6 +198,12 @@ using UnityEngine.Events;
 		float n= Mathf.Floor(cameraRotation.y/360);
 		UpdateLookAngleValue(cameraRotation.y-n*360f);
 		//Debug.Log (cameraRotation.y);
+       	 }
+
+        //Physics methods
+        private void FixedUpdate()
+        {
+           
         }
         private void OnCollisionEnter(Collision collision)
         {
