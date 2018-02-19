@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
     [ExecuteInEditMode]
     public class FirstPersonCharacterController : MonoBehaviour
-    {
+    {	
+
 		[Header("Camera")]
 		public GameObject cam;
 
@@ -28,7 +29,7 @@ using UnityEngine.Events;
 
 		[Header("Look Angle")]
 	public float lookAngle = 1; //1 is default angle when player start the level! when anle =5 set it back to 1;
-
+		
 		public LookAngleChangeEvent m_lookAngleChangeEvent;
 		public bool Srotenabled = false;
         //Properties
@@ -86,8 +87,8 @@ using UnityEngine.Events;
         private void Update()
         {
             //Look Input
-            //lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-
+            lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+		/*
 				if (Input.GetButtonDown ("RotateCamera") && !excuting) {
 					excuting = true;
 		//	Debug.Log ("rotated camera");
@@ -124,7 +125,7 @@ using UnityEngine.Events;
 			UpdateLookAngleState45(d);
 			}
 				
-			
+			*/
             //Move Input
             moveDelta = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
@@ -140,12 +141,12 @@ using UnityEngine.Events;
         private void FixedUpdate()
         {
             //Update character rotation
-            //Vector3 characterRotation = transform.rotation.eulerAngles;
-           // characterRotation.y += lookDelta.x * lookSensitivity;
+            Vector3 characterRotation = transform.rotation.eulerAngles;
+            characterRotation.y += lookDelta.x * lookSensitivity;
 
 
 
-            //transform.rotation = Quaternion.Euler(characterRotation);
+            transform.rotation = Quaternion.Euler(characterRotation);
 
 
             //Update weapon - Called here instead of within its own FixedUpdate because we need to guarentee it's not updated until after the camera position has been
@@ -182,10 +183,10 @@ using UnityEngine.Events;
 
 		//Update camera rotation
 		// cameraRotation.x -= lookDelta.y * lookSensitivity;
-		//  cameraRotation.y += lookDelta.x * lookSensitivity;
+		  cameraRotation.y += lookDelta.x * lookSensitivity;
 		cameraRotation.z = 0;
 
-		/*
+
             //Clamp looking too high/low
 		if (cameraRotation.x < 200) cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
 
@@ -195,12 +196,14 @@ using UnityEngine.Events;
 		RecoiledRotation.x -= recoil;
 
 		cameraControlled.transform.rotation = Quaternion.Euler(RecoiledRotation);
-		*/
+
 		//Update camera position
 		cameraControlled.transform.position = Vector3.SmoothDamp(cameraControlled.transform.position, transform.TransformPoint(cameraOffset), ref cameraVelocity, cameraSmooth);
 
-
-
+		//broadcast camera rotation to all registered events
+		float n= Mathf.Floor(cameraRotation.y/360);
+		UpdateLookAngleValue(cameraRotation.y-n*360f);
+		//Debug.Log (cameraRotation.y);
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -229,6 +232,11 @@ using UnityEngine.Events;
 		//	Debug.Log ("can execute");
 		//	Debug.Log( transform.eulerAngles.y);
 		}
+
+	public void UpdateLookAngleValue(float angle){
+
+		m_lookAngleChangeEvent.Invoke (angle);
+	}
 
 	public void UpdateLookAngleState90(float direction){//1 is clockwise
 		

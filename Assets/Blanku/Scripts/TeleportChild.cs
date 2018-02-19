@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class TeleportChild : MonoBehaviour {
-
+	//this script only provides infor if player is inside the trigger box
 	public IllusionTeleport boss;
-	public Transform targetPoint;
+
 	[Range(1,2)]
 
 	public bool PlayerInside = false;
@@ -19,9 +19,6 @@ public class TeleportChild : MonoBehaviour {
 	public void OnTriggerEnter(Collider other){
 		if( other.tag == "Player"){
 			PlayerInside = true;
-			if (boss.portalOn) {
-					TeleportPlayer ();
-				}
 			}
 	}
 
@@ -29,21 +26,5 @@ public class TeleportChild : MonoBehaviour {
 		PlayerInside = false;
 
 		//boss.portalOn = true;
-	}
-
-	public void OnCameraRotateCheck(){// use this to secure the case when  PLAYER IS ALREADY IN THE TRIGGER WHEN ROTATE THE CAMERA
-		if (PlayerInside) {
-			TeleportPlayer ();
-		}
-	}
-
-
-	 void TeleportPlayer(){
-		//calculate difference between portal
-		Vector3 diff =  targetPoint.position - playerRef.transform.position;
-		playerRef.transform.position += diff;
-		Debug.Log ("teleport");
-		//Time.timeScale = 0f;
-
 	}
 }
