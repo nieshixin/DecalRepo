@@ -41,8 +41,9 @@ using UnityEngine.Events;
         //Backing fields
         private Rigidbody attachedRigidbody;
         private CapsuleCollider capsuleCollider;
+	[SerializeField]
+	public Vector3 cameraRotation;
 
-        private Vector3 cameraRotation;
         private Vector2 lookDelta;
 
         private float recoil;
@@ -83,6 +84,7 @@ using UnityEngine.Events;
 			
             if (cameraControlled == null) cameraControlled = Camera.main;
             cameraRotation = cameraControlled.transform.rotation.eulerAngles;
+	
         }
         private void Update()
         {
@@ -135,14 +137,19 @@ using UnityEngine.Events;
 
 			///////////////////////////////////////////////previously belongs to fixed update
 		//Update character rotation
-		Vector3 characterRotation = transform.rotation.eulerAngles;
-		characterRotation.y += lookDelta.x * lookSensitivity;
+		if (!CamLock) {
+			
+			Vector3 characterRotation = transform.localRotation.eulerAngles;
+			//Debug.Log (characterRotation.y);
+	
+			characterRotation.y += lookDelta.x * lookSensitivity;
+		
 
+			//Debug.Log (characterRotation.y);
 
+			transform.localRotation = Quaternion.Euler(characterRotation);
 
-		transform.rotation = Quaternion.Euler(characterRotation);
-
-
+		}
 		//Update weapon - Called here instead of within its own FixedUpdate because we need to guarentee it's not updated until after the camera position has been
 
 		///             //Get velocity
@@ -177,21 +184,24 @@ using UnityEngine.Events;
 
 		//Update camera rotation
 		// cameraRotation.x -= lookDelta.y * lookSensitivity;
-		cameraRotation.y += lookDelta.x * lookSensitivity;
-		cameraRotation.z = 0;
-
+		if (!CamLock) {
+			cameraRotation.y += lookDelta.x * lookSensitivity;
+			cameraRotation.z = 0;
+		}
 
 		//Clamp looking too high/low
 		if (cameraRotation.x < 200) cameraRotation.x = Mathf.Clamp(cameraRotation.x, -90, 90);
 
 		//Update recoil
+		/*
 		recoil = Mathf.SmoothDamp(recoil, 0, ref recoilVelocity, recoilDuration);
 		Vector3 RecoiledRotation = cameraRotation;
 		RecoiledRotation.x -= recoil;
-
-		cameraControlled.transform.rotation = Quaternion.Euler(RecoiledRotation);
+*/
+		cameraControlled.transform.rotation = Quaternion.Euler(cameraRotation);
 
 		//Update camera position
+
 		cameraControlled.transform.position = Vector3.SmoothDamp(cameraControlled.transform.position, transform.TransformPoint(cameraOffset), ref cameraVelocity, cameraSmooth);
 
 		//broadcast camera rotation to all registered events
