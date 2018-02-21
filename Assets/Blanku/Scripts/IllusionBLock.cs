@@ -14,6 +14,7 @@ public class illusionBlock : MonoBehaviour {
 	public float MaxAngle;
 	public float IdealAngle;
 
+	public bool LookHelper;
 
 	[SerializeField]
 	float angleTimer;
@@ -29,7 +30,7 @@ public class illusionBlock : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (angleTimer >= 1f && !controller.CamLock) {
+		if (angleTimer >= 1f && !controller.CamLock && LookHelper) {
 			CamToIdealAngle ();
 		}
 
