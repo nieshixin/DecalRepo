@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 		[Header("Camera")]
 		public GameObject cam;
-
+		public bool CamLock = false;
 		private bool excuting = false;
 		Space space = Space.Self;
         [Header("Look")]
