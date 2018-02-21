@@ -3,24 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour {
-	public Transform[] destinations;
+	[Header("level design")]
+	public Transform destination;
+	public bool RegisterOnTriggers = false;
 
 	private Vector3 initialPos;
-	public float timePerStop;
-	private float moveTime;
+	private Vector3 exchange;
+
+	public float moveTime;
+
+
 	// Use this for initialization
 	void Start () {
+		
 		initialPos = transform.position;
-		moveTime = destinations.Length *timePerStop;
-		if (destinations.Length > 1) {
-			iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "path", destinations, "easetype", iTween.EaseType.linear, "movetopath", false, "looptype", "pingPong", "delay", 1f));
-		} else {
-			iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destinations[0], "easetype", iTween.EaseType.easeInOutQuart, "movetopath", false, "looptype", "pingPong", "delay", 1f));
-		}
+
+			if (!RegisterOnTriggers) {
+				iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.easeInOutQuart,  "looptype", "pingPong", "delay", 1f));
+			} if (RegisterOnTriggers) {
+				GameMechanicManager.Instance.passingEvent.AddListener (MoveOnTrigger);
+			}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+	void MoveOnTrigger(){
+		iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.linear));
+		 exchange = initialPos;
+		initialPos = destination.position;
+		destination.position = exchange;
+
 	}
 }
