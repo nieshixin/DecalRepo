@@ -15,6 +15,7 @@ public class IllusionTeleport : MonoBehaviour {
 	public float MaxAngle;
 
 	public float IdealAngle;
+	public bool LookHelper;
 
 	public bool portalOn = false;
 
@@ -31,7 +32,7 @@ public class IllusionTeleport : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (angleTimer >= 1f && !controller.CamLock) {
+		if (angleTimer >= 1f && !controller.CamLock && LookHelper) {
 			CamToIdealAngle ();
 		}
 		/*
