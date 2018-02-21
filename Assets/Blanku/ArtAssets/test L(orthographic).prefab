@@ -57,13 +57,13 @@ MonoBehaviour:
   - name: Albedo
     nameID: 84
     type: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0, g: 0, b: 0, a: 1}
     value: 0
     enabled: 1
   - name: Emission
     nameID: 59
     type: 2
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0, g: 0, b: 0, a: 1}
     value: 1
     enabled: 1
   tiling: {x: 1, y: 1}
