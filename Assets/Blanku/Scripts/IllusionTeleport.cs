@@ -61,6 +61,7 @@ public class IllusionTeleport : MonoBehaviour {
 			}
 		} else {
 			angleTimer = 0;
+
 		}
 	}
 	void TeleportPlayer(){
