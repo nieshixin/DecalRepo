@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class illusionBlock : MonoBehaviour {
+public class FakeWall : MonoBehaviour {
 
 	GameObject playerRef;
 	FirstPersonCharacterController controller;
