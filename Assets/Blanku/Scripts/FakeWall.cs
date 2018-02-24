@@ -8,7 +8,6 @@ public class FakeWall : MonoBehaviour {
 	FirstPersonCharacterController controller;
 	BoxCollider col; 
 
-	public Transform targetPoint;
 	[Header("Available angles")]
 	public float MinAngle;//minimum y angle for camera to enable this portal
 	public float MaxAngle;

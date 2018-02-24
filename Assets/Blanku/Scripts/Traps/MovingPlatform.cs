@@ -21,7 +21,7 @@ public class MovingPlatform : MonoBehaviour {
 			if (!RegisterOnTriggers) {
 				iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.easeInOutQuart,  "looptype", "pingPong", "delay", 1f));
 			} if (RegisterOnTriggers) {
-				GameMechanicManager.Instance.passingEvent.AddListener (MoveOnTrigger);
+				GameMechanicManager.Instance.passingEvent.AddListener (ActionWhenPass);
 			}
 	}
 	
@@ -29,7 +29,7 @@ public class MovingPlatform : MonoBehaviour {
 	void Update () {
 		
 	}
-	void MoveOnTrigger(){
+	void ActionWhenPass(){
 		iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.linear));
 		 exchange = initialPos;
 		initialPos = destination.position;

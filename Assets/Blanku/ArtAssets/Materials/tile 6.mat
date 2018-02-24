@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: tile 2
+  m_Name: tile 6
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
@@ -64,7 +64,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 0.6
-    - _Glossiness: 0.48
+    - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
@@ -76,6 +76,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.20144898, g: 0.50735295, b: 0.33013958, a: 1}
-    - _EmissionColor: {r: 0.375, g: 0.34849137, b: 0.26194853, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.5147059, g: 0.49578288, b: 0.49578288, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
