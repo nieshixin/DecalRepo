@@ -6,12 +6,14 @@ public class RotatingPlatform : MonoBehaviour {
 	public bool RegisteredToGate;
 
 	public float time;
-	public float ActionDelay;
-	public string loopType;
+	public string axis;
+	public float degrees;
 	// Use this for initialization
+
+	private bool hasRotated = false;
 	void Start () {
 		if (!RegisteredToGate) {
-			iTween.RotateAdd (gameObject, iTween.Hash ("z", 90f, "time", 2.5f, "looptype", iTween.LoopType.pingPong, "delay", 3f));	
+			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time, "looptype", iTween.LoopType.pingPong, "delay", 3f));	
 		} else {
 			GameMechanicManager.Instance.passingEvent.AddListener (ActionWhenPass);
 		}
@@ -23,6 +25,19 @@ public class RotatingPlatform : MonoBehaviour {
 	}
 
 	public void ActionWhenPass(){
-		iTween.RotateAdd (gameObject, iTween.Hash ("z", 90f, "time", 2.5f, "looptype", iTween.LoopType.pingPong, "delay", 3f));	
+		if (hasRotated) {
+			degrees = -degrees;
+			Debug.Log (degrees);
+			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time));	
+			hasRotated = false;
+			degrees = -degrees;
+			return;
+		}
+		else if (!hasRotated) {
+			Debug.Log (degrees);
+			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time));	
+			hasRotated = true;
+			return;
+		}
 	}
 }

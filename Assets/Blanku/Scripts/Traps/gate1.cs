@@ -19,7 +19,7 @@ public class gate1 : MonoBehaviour {
 	}
 
 	void OnTriggerExit(){
-		if (boss.trigger1 && boss.trigger2) {
+		if (boss.trigger1 && boss.trigger2 && boss.gateDisabled == false) {
 			GameMechanicManager.Instance.passingEvent.Invoke ();
 			boss.trigger1 = false;
 			boss.trigger2 = false;

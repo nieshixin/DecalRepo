@@ -108,11 +108,11 @@ namespace Beffio.Dithering
 			//_palette = 	BeffioDitherEditorUtilities.GetAssetFromVector(_paletteRefProperty.vectorValue) as Palette;
 			//_pattern = 	BeffioDitherEditorUtilities.GetAssetFromVector(_patternRefProperty.vectorValue) as Pattern;
 
-			if(_palette == null){
+			if(_palette==null){
 				_palette = AssetDatabase.LoadAssetAtPath<Palette>(_defaultPalettePath);
 			}
-
-			if(_pattern == null){
+			
+			if(_pattern==null){
 				_pattern = AssetDatabase.LoadAssetAtPath<Pattern>(_defaultPatternPath);
 			}
 

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 namespace Beffio.Dithering
-{   
+{
     public class PostProf : ScriptableObject
     {
         #pragma warning disable 0169 // "field x is never used"
