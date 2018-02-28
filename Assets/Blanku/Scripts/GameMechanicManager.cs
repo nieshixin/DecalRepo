@@ -55,7 +55,7 @@ public class GameMechanicManager : MonoBehaviour {
 	void Update () {
 		
 		if(Input.GetKeyDown (KeyCode.Q)){
-			passingEvent.Invoke ();
+			MoveEvent_A.Invoke ();
 		};
 
 	}

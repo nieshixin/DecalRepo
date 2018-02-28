@@ -2470,7 +2470,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh17716
+  m_Name: pb_Mesh34022
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2604,7 +2604,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4422523995901720, guid: 24289b2aa1857234ca07014b7b1e879a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.662
+      value: 4.76
       objectReference: {fileID: 0}
     - target: {fileID: 4422523995901720, guid: 24289b2aa1857234ca07014b7b1e879a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2612,7 +2612,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4422523995901720, guid: 24289b2aa1857234ca07014b7b1e879a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -9.411
+      value: -19.54
       objectReference: {fileID: 0}
     - target: {fileID: 4422523995901720, guid: 24289b2aa1857234ca07014b7b1e879a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2800,7 +2800,7 @@ Prefab:
     - target: {fileID: 114626106041415582, guid: 24289b2aa1857234ca07014b7b1e879a,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114479181445666966, guid: 24289b2aa1857234ca07014b7b1e879a,
         type: 2}
@@ -2827,12 +2827,12 @@ Prefab:
     - target: {fileID: 114626106041415582, guid: 24289b2aa1857234ca07014b7b1e879a,
         type: 2}
       propertyPath: cameraRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 114626106041415582, guid: 24289b2aa1857234ca07014b7b1e879a,
         type: 2}
       propertyPath: cameraRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1005690342174126, guid: 24289b2aa1857234ca07014b7b1e879a, type: 2}
       propertyPath: m_IsActive
@@ -2852,7 +2852,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh17506
+  m_Name: pb_Mesh33824
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -3693,7 +3693,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh17396
+  m_Name: pb_Mesh33714
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -9054,7 +9054,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh17446
+  m_Name: pb_Mesh33764
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -9204,20 +9204,20 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       colored: 0
-      intensity: 0.2
+      intensity: 0.045
       size: 0.4
       luminanceContribution: 0
       animated: 0
   colored: 0
-  intensity: 0.2
+  intensity: 0.045
   size: 0.4
   luminanceContribution: 0
   animated: 0
-  _palette: {fileID: 11400000, guid: 0bc27c747418cc6499ba8293d14b321e, type: 2}
+  _palette: {fileID: 11400000, guid: b8481af18b66f054ab7d732527193589, type: 2}
   _pattern: {fileID: 11400000, guid: b6eadeb2fa0136d4e860b5fd3a6d7d84, type: 2}
   _patternTexture: {fileID: 0}
   _shader: {fileID: 4800000, guid: 0e4c0c6d48b7240d8b59f441b94c2b0e, type: 3}
-  _pixelScale: 0.633
+  _pixelScale: 0.696
   intensityMultiplier: 0.25
   generalIntensity: 0.5
   blackIntensity: 1

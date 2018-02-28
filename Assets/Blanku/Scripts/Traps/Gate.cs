@@ -23,7 +23,7 @@ public class Gate : MonoBehaviour {
 	FirstPersonCharacterController controller;
 
 
-	[Header("Available angles")]
+	[Header("Disabled angles")]
 	public float MinAngle;//minimum y angle for camera to enable this portal
 	public float MaxAngle;
 	public float IdealAngle;
