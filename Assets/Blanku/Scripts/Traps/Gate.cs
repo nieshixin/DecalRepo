@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GATETYPE{Moving, Rotating};
+
 public class Gate : MonoBehaviour {
 	[HideInInspector]
 	public bool trigger1;
@@ -9,6 +11,13 @@ public class Gate : MonoBehaviour {
 	public bool trigger2;
 	[HideInInspector]
 	public bool gateDisabled = false;
+
+
+	public GATETYPE gateType;
+	public string gateChannel;
+
+
+
 
 	GameObject playerRef;
 	FirstPersonCharacterController controller;
@@ -21,7 +30,7 @@ public class Gate : MonoBehaviour {
 
 	public bool LookHelper;
 
-	[SerializeField]
+	[HideInInspector]
 	float angleTimer;
 	// Use this for initialization
 	void Start () {

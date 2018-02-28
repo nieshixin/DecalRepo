@@ -5,13 +5,14 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour {
 	[Header("level design")]
 	public Transform destination;
-	public bool RegisterOnTriggers = false;
+	public float moveTime;
+	public bool RegisterOnTriggers;
+
+	public string channelReceive = "A"; //a,b,c channel this is on
+
 
 	private Vector3 initialPos;
 	private Vector3 exchange;
-
-	public float moveTime;
-
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +22,21 @@ public class MovingPlatform : MonoBehaviour {
 			if (!RegisterOnTriggers) {
 				iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.easeInOutQuart,  "looptype", "pingPong", "delay", 1f));
 			} if (RegisterOnTriggers) {
-				GameMechanicManager.Instance.passingEvent.AddListener (ActionWhenPass);
+				switch(channelReceive){
+				case "A":
+					GameMechanicManager.Instance.MoveEvent_A.AddListener (ActionWhenPass);
+					break;
+				case "B":
+					GameMechanicManager.Instance.MoveEvent_B.AddListener (ActionWhenPass);
+					break;
+				case "C":
+					GameMechanicManager.Instance.MoveEvent_C.AddListener (ActionWhenPass);
+					break;
+				}
 			}
 	}
-	
-	// Update is called once per frame
+
+
 	void Update () {
 		
 	}

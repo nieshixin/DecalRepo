@@ -11,11 +11,24 @@ public class RotatingPlatform : MonoBehaviour {
 	// Use this for initialization
 
 	private bool hasRotated = false;
+
+	public string channelReceive;
+
 	void Start () {
 		if (!RegisteredToGate) {
 			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time, "looptype", iTween.LoopType.pingPong, "delay", 3f));	
 		} else {
-			GameMechanicManager.Instance.passingEvent.AddListener (ActionWhenPass);
+			switch(channelReceive){
+			case "A":
+				GameMechanicManager.Instance.RotEvent_A.AddListener (ActionWhenPass);
+				break;
+			case "B":
+				GameMechanicManager.Instance.RotEvent_B.AddListener (ActionWhenPass);
+				break;
+			case "C":
+				GameMechanicManager.Instance.RotEvent_C.AddListener (ActionWhenPass);
+				break;
+			}
 		}
 	}
 	
