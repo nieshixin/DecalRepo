@@ -14,6 +14,7 @@ public class MovingPlatform : MonoBehaviour {
 	private Vector3 initialPos;
 	private Vector3 exchange;
 
+	private bool hasMoved = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -34,6 +35,7 @@ public class MovingPlatform : MonoBehaviour {
 					break;
 				}
 			}
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<FirstPersonCharacterController> ().PlayerDied.AddListener (DeadReset);
 	}
 
 
@@ -41,10 +43,20 @@ public class MovingPlatform : MonoBehaviour {
 		
 	}
 	void ActionWhenPass(){
+		
+		hasMoved = !hasMoved;
+
 		iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.linear));
 		 exchange = initialPos;
 		initialPos = destination.position;
 		destination.position = exchange;
 
+	}
+
+	void DeadReset(){//if this has moved, run this when player died, this resets the platform
+		if (hasMoved) {
+			ActionWhenPass ();
+		}
+		
 	}
 }

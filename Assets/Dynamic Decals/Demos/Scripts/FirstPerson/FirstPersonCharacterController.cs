@@ -58,7 +58,16 @@ using UnityEngine.Events;
         private bool jumpInput;
         private Vector3 cameraVelocity;
 
+		[HideInInspector]
+		public UnityEvent PlayerDied;
         //Generic methods
+
+	void Start(){
+		if (PlayerDied == null) {
+			PlayerDied = new UnityEvent ();
+		}
+	}
+
         private void Awake()
         {
             //Grab our components

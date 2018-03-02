@@ -14,6 +14,7 @@ public class RotatingPlatform : MonoBehaviour {
 
 	public string channelReceive;
 
+
 	void Start () {
 		if (!RegisteredToGate) {
 			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time, "looptype", iTween.LoopType.pingPong, "delay", 3f));	
@@ -30,6 +31,8 @@ public class RotatingPlatform : MonoBehaviour {
 				break;
 			}
 		}
+
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<FirstPersonCharacterController> ().PlayerDied.AddListener (DeadReset);
 	}
 	
 	// Update is called once per frame
@@ -38,6 +41,7 @@ public class RotatingPlatform : MonoBehaviour {
 	}
 
 	public void ActionWhenPass(){
+		
 		if (hasRotated) {
 			degrees = -degrees;
 			Debug.Log (degrees);
@@ -51,6 +55,12 @@ public class RotatingPlatform : MonoBehaviour {
 			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time));	
 			hasRotated = true;
 			return;
+		}
+	}
+
+	void DeadReset(){
+		if (hasRotated) {
+			ActionWhenPass ();
 		}
 	}
 }

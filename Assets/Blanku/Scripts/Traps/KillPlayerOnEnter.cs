@@ -32,6 +32,9 @@ public class KillPlayerOnEnter : MonoBehaviour {
 
 			//destroy player
 			GameLoopEvents.instance.ResetPlayer();
+			//
+			co.gameObject.GetComponent<FirstPersonCharacterController>().PlayerDied.Invoke();
+
 			//GetComponent<BoxCollider> ().isTrigger = false;
 
 
