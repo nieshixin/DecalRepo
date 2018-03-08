@@ -17,7 +17,7 @@ public class RotatingPlatform : MonoBehaviour {
 
 	void Start () {
 		if (!RegisteredToGate) {
-			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time, "looptype", iTween.LoopType.pingPong, "delay", 3f));	
+			iTween.RotateAdd (gameObject, iTween.Hash (axis, degrees, "time", time, "looptype", iTween.LoopType.pingPong, "delay", 2f, "space", Space.Self));	
 		} else {
 			switch(channelReceive){
 			case "A":
