@@ -14,14 +14,18 @@ public class MovingPlatform : MonoBehaviour {
 	private Vector3 initialPos;
 	private Vector3 exchange;
 
+
 	private bool hasMoved = false;
 	// Use this for initialization
 	void Start () {
 		
 		initialPos = transform.position;
+		if (destination == null) {
+			Debug.Log (gameObject.name + " has moving script and not assigned destination!");
+		}
 
 			if (!RegisterOnTriggers) {
-				iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.easeInOutQuart,  "looptype", "pingPong", "delay", 1f));
+			iTween.MoveTo (gameObject, iTween.Hash ("time", moveTime, "position", destination, "easetype", iTween.EaseType.easeInOutQuart,  "looptype", "pingPong", "delay", 1f));
 			} if (RegisterOnTriggers) {
 				switch(channelReceive){
 				case "A":

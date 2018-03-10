@@ -12,6 +12,7 @@ public class Gate : MonoBehaviour {
 	[HideInInspector]
 	public bool gateDisabled = false;
 
+	public bool canBeDisabled;
 
 	public GATETYPE gateType;
 	public string gateChannel;
@@ -50,7 +51,7 @@ public class Gate : MonoBehaviour {
 
 	public void CheckIllusion(float lookAngle){
 		
-		if (lookAngle < MaxAngle && lookAngle > MinAngle) {
+		if (lookAngle < MaxAngle && lookAngle > MinAngle && canBeDisabled) {
 			//if angle is correct, add to timer, 0.5 value/sec
 			if (angleTimer < 1) {
 				angleTimer += Time.deltaTime * 0.5f;
