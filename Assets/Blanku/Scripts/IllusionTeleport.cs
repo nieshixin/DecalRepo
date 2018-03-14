@@ -17,6 +17,9 @@ public class IllusionTeleport : MonoBehaviour {
 	public float IdealAngle;
 	public bool LookHelper;
 
+	public float RequireTime = 1f; // time required to be in correct angle for camera helper to start
+	public float RotateTime = 0.5f; //time rotating the camera helper
+	[HideInInspector]
 	public bool portalOn = false;
 
 	[SerializeField]
@@ -32,7 +35,7 @@ public class IllusionTeleport : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (angleTimer >= 1f && !controller.CamLock && LookHelper) {
+		if (angleTimer >= RequireTime && !controller.CamLock && LookHelper) {
 			CamToIdealAngle ();
 		}
 		/*
@@ -80,7 +83,7 @@ public class IllusionTeleport : MonoBehaviour {
 			Debug.Log ("start ease");
 			angleTimer = 0f;
 		controller.CamLock = true;
-		iTween.RotateTo (Camera.main.gameObject, iTween.Hash("y", IdealAngle, "time", 2f, "islocal", true, "easetype", "easeinoutQuart", "oncomplete", "UpdateRot", "oncompletetarget", gameObject, "onstart", "RotatePlayer", "onstarttarget", gameObject));
+		iTween.RotateTo (Camera.main.gameObject, iTween.Hash("y", IdealAngle, "time", RotateTime, "islocal", true, "easetype", "easeinoutQuart", "oncomplete", "UpdateRot", "oncompletetarget", gameObject, "onstart", "RotatePlayer", "onstarttarget", gameObject));
 		}
 	public void ResetTimer(){
 		

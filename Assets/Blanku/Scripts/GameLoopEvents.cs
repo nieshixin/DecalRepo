@@ -11,6 +11,7 @@ public class GameLoopEvents : MonoBehaviour {
 	void Start () {
 		instance = this;
 
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<FirstPersonCharacterController> ().PlayerDied.AddListener (ResetPlayerPosition);
 
 	}
 	
@@ -22,9 +23,12 @@ public class GameLoopEvents : MonoBehaviour {
 		}
 	}
 	 
-	public void ResetPlayer(){
-		
+	public void ResetPlayerPosition(){
 		iTween.CameraFadeTo (1f, 2f);
 		GameObject.FindGameObjectWithTag ("Player").transform.position = spawnPoint.transform.position;
+	}
+
+	public void ChangeSpawnPoint(GameObject t){
+		spawnPoint = t;
 	}
 }

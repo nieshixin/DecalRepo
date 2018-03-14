@@ -31,7 +31,7 @@ public class KillPlayerOnEnter : MonoBehaviour {
 			printer.Print (splashLocation, splashRotation, ground.transform);
 
 			//destroy player
-			GameLoopEvents.instance.ResetPlayer();
+			//GameLoopEvents.instance.ResetPlayer();
 			//
 			co.gameObject.GetComponent<FirstPersonCharacterController>().PlayerDied.Invoke();
 
