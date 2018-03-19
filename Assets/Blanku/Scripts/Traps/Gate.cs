@@ -9,7 +9,7 @@ public class Gate : MonoBehaviour {
 	public bool trigger1;
 	[HideInInspector]
 	public bool trigger2;
-	[HideInInspector]
+
 	public bool gateDisabled = false;
 
 	public bool canBeDisabled;
@@ -18,20 +18,21 @@ public class Gate : MonoBehaviour {
 	public string gateChannel;
 
 
-
+	[SerializeField]
+	float angle;
 
 	GameObject playerRef;
 	FirstPersonCharacterController controller;
 
-
+	public bool LookHelper;
 	[Header("Disabled angles")]
 	public float MinAngle;//minimum y angle for camera to enable this portal
 	public float MaxAngle;
 	public float IdealAngle;
 
-	public bool LookHelper;
+	public bool ReverseCase;
 
-	[HideInInspector]
+	[SerializeField]
 	float angleTimer;
 	// Use this for initialization
 	void Start () {
@@ -50,25 +51,67 @@ public class Gate : MonoBehaviour {
 	}
 
 	public void CheckIllusion(float lookAngle){
-		
-		if (lookAngle < MaxAngle && lookAngle > MinAngle && canBeDisabled) {
-			//if angle is correct, add to timer, 0.5 value/sec
-			if (angleTimer < 1) {
-				angleTimer += Time.deltaTime * 0.5f;
-			}
-			if (gateDisabled == true) {
-				return;
-			} else {
-				gateDisabled = true;
-			}
-		} else {
-			angleTimer = 0;
-			if (gateDisabled == false) {
-				return;
-			} else {
-				gateDisabled = false;
+		//Debug.Log (lookAngle);
+		angle = lookAngle;
+
+		if (canBeDisabled) {
+			if (ReverseCase) {
+			//	float angle = lookAngle;
+			//	if (angle > MinAngle) {
+			//		angle += 360;
+			//	}
+				if (lookAngle < MaxAngle  || lookAngle > MinAngle) {
+					//if angle is correct, add to timer, 0.5 value/sec
+					if (angleTimer < 1) {
+						angleTimer += Time.deltaTime * 0.5f;
+					}
+					if (gateDisabled == true) {
+						return;
+					} else {//disable gate
+						gateDisabled = true;
+					
+					}
+				}
+				else {
+					angleTimer = 0;
+					if (gateDisabled == false) {
+						return;
+					} else {//enable gate
+						gateDisabled = false;
+					}
+				}
+			} else {//normal case
+				if (lookAngle < MaxAngle && lookAngle > MinAngle) {
+					//if angle is correct, add to timer, 0.5 value/sec
+					if (angleTimer < 1) {
+						angleTimer += Time.deltaTime * 0.5f;
+					}
+					if (gateDisabled == true) {
+						return;
+					} else {//disable gate
+						gateDisabled = true;
+					}
+				} else {
+				
+					angleTimer = 0;
+					if (gateDisabled == false) {
+						return;
+					} else {//enable gate
+						gateDisabled = false;
+					}
+				}
 			}
 		}
+
+		else {//if it's can't be disabled, enable the gate, very simple
+				angleTimer = 0;
+				if (gateDisabled == false) {
+					return;
+				} else {//enable gate
+					gateDisabled = false;
+				}
+			}
+		
 	}
 
 

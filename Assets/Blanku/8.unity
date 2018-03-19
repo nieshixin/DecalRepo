@@ -3852,7 +3852,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh24340
+  m_Name: pb_Mesh28908
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -8018,12 +8018,14 @@ MonoBehaviour:
   trigger1: 0
   trigger2: 0
   gateDisabled: 0
+  canBeDisabled: 1
   gateType: 0
   gateChannel: A
+  LookHelper: 1
   MinAngle: 79
   MaxAngle: 87
   IdealAngle: 84.8
-  LookHelper: 1
+  ReverseCase: 0
 --- !u!1 &1460644568 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1005690342174126, guid: 24289b2aa1857234ca07014b7b1e879a,
@@ -9602,6 +9604,8 @@ MonoBehaviour:
   MaxAngle: 298
   IdealAngle: 297.5
   LookHelper: 1
+  RequireTime: 1
+  RotateTime: 0.5
   portalOn: 0
   angleTimer: 0
 --- !u!1 &2052933717
