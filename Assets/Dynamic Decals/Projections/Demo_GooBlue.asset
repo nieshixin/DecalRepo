@@ -21,31 +21,31 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   maskMethod: 0
   masks: 00000000
-  projectionLimit: 120
-  _Cutoff: 5
-  _TilingOffset: 282
-  _MaskBase: 283
-  _MaskLayers: 284
+  projectionLimit: 75
+  _Cutoff: 78
+  _TilingOffset: 237
+  _MaskBase: 238
+  _MaskLayers: 239
   albedo:
     texture: {fileID: 2800000, guid: 0d59b9aa0d87fa5488c4b12d6798b3a1, type: 3}
-    color: {r: 0, g: 0.31724125, b: 0.39999998, a: 1}
-    _MainTex: 1
-    _Color: 10
+    color: {r: 1, g: 1, b: 1, a: 1}
+    _MainTex: 8
+    _Color: 84
   metallic:
     texture: {fileID: 0}
-    metallicity: 0.2
-    glossiness: 0.4
-    _MetallicGlossMap: 238
-    _Metallic: 247
-    _Glossiness: 244
+    metallicity: 0.011
+    glossiness: 1
+    _MetallicGlossMap: 211
+    _Metallic: 215
+    _Glossiness: 218
   normal:
     texture: {fileID: 2800000, guid: b66c2383353dc7d46a137424b18f24ee, type: 3}
-    strength: 0.2
-    _BumpMap: 6
-    _BumpScale: 241
+    strength: 0
+    _BumpMap: 80
+    _BumpScale: 219
   emissive:
     texture: {fileID: 0}
-    color: {r: 0, g: 0.31724125, b: 0.39999998, a: 1}
-    intensity: 1
-    _EmissionMap: 237
-    _EmissionColor: 81
+    color: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 4
+    _EmissionMap: 208
+    _EmissionColor: 59
