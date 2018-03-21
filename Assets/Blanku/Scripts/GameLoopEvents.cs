@@ -32,8 +32,12 @@ public class GameLoopEvents : MonoBehaviour {
 		
 		iTween.ValueTo (FadeObject,iTween.Hash("from", 0f, "to", 1f, "time", 0.5f, "onupdate", "TweenFadeValue", "onupdatetarget", gameObject, "oncomplete", "FadeBack", "oncompletetarget", gameObject));
 
-
+		if (GameObject.FindGameObjectWithTag ("Clone") != null) {
+			Vector3 diff = spawnPoint.transform.position - GameObject.FindGameObjectWithTag ("Player").transform.position;
+			GameObject.FindGameObjectWithTag ("Clone").transform.position += diff;
+		}
 		GameObject.FindGameObjectWithTag ("Player").transform.position = spawnPoint.transform.position;
+
 	}
 
 	public void ChangeSpawnPoint(GameObject t){
