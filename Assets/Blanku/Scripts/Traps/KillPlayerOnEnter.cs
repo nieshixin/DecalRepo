@@ -4,12 +4,12 @@ using UnityEngine;
 using LlockhamIndustries.Decals;
 public class KillPlayerOnEnter : MonoBehaviour {
 
-	Printer printer;
-	GameObject ground;
+	//Printer printer;
+	//GameObject ground;
 	// Use this for initialization
 	void Start () {
-		printer = GetComponent<Printer> ();
-		ground = GameObject.FindGameObjectWithTag ("Ground");
+		//printer = GetComponent<Printer> ();
+		//ground = GameObject.FindGameObjectWithTag ("Ground");
 	}
 	
 	// Update is called once per frame
@@ -24,11 +24,11 @@ public class KillPlayerOnEnter : MonoBehaviour {
 
 		if (co.gameObject.CompareTag ("Player")) {//when collider with player
 			Debug.Log ("collid player, destroy: " + co.gameObject.name);
-			var splashLocation = co.gameObject.transform.position;
-			splashLocation.y = ground.transform.position.y;
-			var splashRotation = Quaternion.identity * Quaternion.Euler(90,0,0);
+		//	var splashLocation = co.gameObject.transform.position;
+			//splashLocation.y = ground.transform.position.y;
+			//var splashRotation = Quaternion.identity * Quaternion.Euler(90,0,0);
 
-			printer.Print (splashLocation, splashRotation, ground.transform);
+			//printer.Print (splashLocation, splashRotation, ground.transform);
 
 			//destroy player
 			//GameLoopEvents.instance.ResetPlayer();
