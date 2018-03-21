@@ -17,7 +17,8 @@ public class TeleportChild : MonoBehaviour {
 		//OnCameraRotateCheck ();
 	}
 	public void OnTriggerEnter(Collider other){
-		if( other.tag == "Player"){
+		if( other.tag == "Player" || other.tag == "Clone"){
+			boss.playerRef = other.gameObject;
 			PlayerInside = true;
 			}
 	}

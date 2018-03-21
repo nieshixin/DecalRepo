@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IllusionTeleport : MonoBehaviour {
-
-	GameObject playerRef;
+	[HideInInspector]
+	public GameObject playerRef;
 	FirstPersonCharacterController controller;
 	public TeleportChild A; //A is the gate
 	//public Transform B; //B is the target point
