@@ -418,7 +418,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1075786
+  m_Name: pb_Mesh54586
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -1644,7 +1644,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-157898
+  m_Name: pb_Mesh54658
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c872720dcd07be4bb3fc2e408ead57c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: 0
+  NextLevel: 10
 --- !u!114 &520146191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,10 +2397,9 @@ MonoBehaviour:
   trigger1: 0
   trigger2: 0
   gateDisabled: 0
-  canBeDisabled: 0
+  canBeDisabled: 1
   gateType: 0
   gateChannel: A
-  angle: 0
   LookHelper: 0
   MinAngle: 312
   MaxAngle: 322
@@ -6053,7 +6052,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-221690
+  m_Name: pb_Mesh54696
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -7001,10 +7000,9 @@ MonoBehaviour:
   trigger1: 0
   trigger2: 0
   gateDisabled: 0
-  canBeDisabled: 0
+  canBeDisabled: 1
   gateType: 0
   gateChannel: B
-  angle: 0
   LookHelper: 0
   MinAngle: 340
   MaxAngle: 350
@@ -10211,7 +10209,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh40084
+  m_Name: pb_Mesh54522
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -12379,6 +12377,7 @@ MonoBehaviour:
   MinAngle: 223.5
   MaxAngle: 226.5
   IdealAngle: 225
+  ReverseCase: 0
   LookHelper: 1
   angleTimer: 0
 --- !u!1 &1577763409
