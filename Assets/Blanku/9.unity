@@ -178,7 +178,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh40334
+  m_Name: pb_Mesh93940
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -1560,6 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 1196248170}
   targetPoint: {fileID: 191094282}
   MinAngle: 296
@@ -2138,7 +2139,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: bad3760ce0435b64288752d639fd233b, type: 2}
+  - {fileID: 2100000, guid: 865b5a6d7a4943042b3d2d85eca056ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2331,10 +2332,13 @@ MonoBehaviour:
   canBeDisabled: 0
   gateType: 0
   gateChannel: A
+  angle: 0
+  LookHelper: 0
   MinAngle: 312
   MaxAngle: 322
   IdealAngle: 317
-  LookHelper: 0
+  ReverseCase: 0
+  angleTimer: 0
 --- !u!114 &521491918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6317,13 +6321,13 @@ Prefab:
         type: 2}
       propertyPath: prints.Array.data[0]
       value: 
-      objectReference: {fileID: 114413972089629360, guid: 4242acf0dbabbd441aa00a8a9dc5be42,
+      objectReference: {fileID: 114609577394644778, guid: 6e74a1e4de3ec7f45b966220b577ff25,
         type: 2}
     - target: {fileID: 114189919856016652, guid: 24289b2aa1857234ca07014b7b1e879a,
         type: 2}
       propertyPath: prints.Array.data[0]
       value: 
-      objectReference: {fileID: 114413972089629360, guid: 4242acf0dbabbd441aa00a8a9dc5be42,
+      objectReference: {fileID: 114609577394644778, guid: 6e74a1e4de3ec7f45b966220b577ff25,
         type: 2}
     - target: {fileID: 20340380691026294, guid: 24289b2aa1857234ca07014b7b1e879a,
         type: 2}
@@ -6403,6 +6407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 261433776}
   targetPoint: {fileID: 1368395572}
   MinAngle: 296
@@ -6458,6 +6463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 1652131305}
   targetPoint: {fileID: 505327799}
   MinAngle: 296
@@ -6473,7 +6479,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-246720
+  m_Name: pb_Mesh93776
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -6708,6 +6714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 4665048}
   targetPoint: {fileID: 1798813703}
   MinAngle: 274.5
@@ -6929,10 +6936,13 @@ MonoBehaviour:
   canBeDisabled: 0
   gateType: 0
   gateChannel: B
+  angle: 0
+  LookHelper: 0
   MinAngle: 340
   MaxAngle: 350
   IdealAngle: 345
-  LookHelper: 0
+  ReverseCase: 0
+  angleTimer: 0
 --- !u!114 &853736695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12028,6 +12038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 1333161532}
   targetPoint: {fileID: 912061245}
   MinAngle: 296
@@ -12184,6 +12195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 586248077}
   targetPoint: {fileID: 1944434649}
   MinAngle: 296
@@ -12715,7 +12727,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh50936
+  m_Name: pb_Mesh93734
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13498,6 +13510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4d5c5688b5c3046bdee272e7055dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRef: {fileID: 0}
   A: {fileID: 2117992439}
   targetPoint: {fileID: 1389091503}
   MinAngle: 296
