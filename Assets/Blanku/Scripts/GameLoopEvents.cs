@@ -15,29 +15,46 @@ public class GameLoopEvents : MonoBehaviour {
 		instance = this;
 
 		FadeObject = GameObject.Find ("FadePanel");
-		FadeImage = FadeObject.GetComponent<Image> ();
-		GameObject.FindGameObjectWithTag ("Player").GetComponent<FirstPersonCharacterController> ().PlayerDied.AddListener (ResetPlayerPosition);
+		if (FadeObject != null) {
+			FadeImage = FadeObject.GetComponent<Image> ();
+		}
+		if (GameObject.FindGameObjectWithTag ("Player") != null) {
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<FirstPersonCharacterController> ().PlayerDied.AddListener (ResetPlayerPosition);
+		}
 
+		FadeBack (2f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//if(Input.GetMouseButtonDown(0)){
+
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
-		//}
+
+
 	}
 	 
 	public void ResetPlayerPosition(){
-		
+
+		//FadeInOut (0.5f);
 		iTween.ValueTo (FadeObject,iTween.Hash("from", 0f, "to", 1f, "time", 0.5f, "onupdate", "TweenFadeValue", "onupdatetarget", gameObject, "oncomplete", "FadeBack", "oncompletetarget", gameObject));
 
+		ResetPos ();
+	}
+
+	public void ResetPos(){
 		if (GameObject.FindGameObjectWithTag ("Clone") != null) {
 			Vector3 diff = spawnPoint.transform.position - GameObject.FindGameObjectWithTag ("Player").transform.position;
 			GameObject.FindGameObjectWithTag ("Clone").transform.position += diff;
 		}
 		GameObject.FindGameObjectWithTag ("Player").transform.position = spawnPoint.transform.position;
 
+	}
+
+
+
+	public void FadeInOut(float time){
+		iTween.ValueTo (FadeObject,iTween.Hash("from", 0f, "to", 1f, "time", time, "onupdate", "TweenFadeValue", "onupdatetarget", gameObject, "oncomplete", "FadeBack", "oncompletetarget", gameObject));
 	}
 
 	public void ChangeSpawnPoint(GameObject t){
@@ -51,4 +68,9 @@ public class GameLoopEvents : MonoBehaviour {
 	void FadeBack(){
 		iTween.ValueTo (FadeObject,iTween.Hash("from", 1f, "to", 0f, "time", 0.5f, "onupdate", "TweenFadeValue", "onupdatetarget", gameObject));
 	}
+
+	void FadeBack(float time){
+		iTween.ValueTo (FadeObject,iTween.Hash("from", 1f, "to", 0f, "time", time, "onupdate", "TweenFadeValue", "onupdatetarget", gameObject));
+	}
+
 }

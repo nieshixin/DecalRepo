@@ -22,6 +22,7 @@ public class NextLevelLoader : MonoBehaviour {
 	}
 	public void LoadNextScene(){
 		//GameObject.Destroy(GameObject.Find ("Orange Goo Pool").gameObject);
+		//GameLoopEvents.instance.FadeInOut (1f);
 		SceneManager.LoadScene (NextLevel);
 
 	}
