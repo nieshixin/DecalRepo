@@ -43,12 +43,18 @@ public class GameLoopEvents : MonoBehaviour {
 	}
 
 	public void ResetPos(){
-		if (GameObject.FindGameObjectWithTag ("Clone") != null) {
-			Vector3 diff = spawnPoint.transform.position - GameObject.FindGameObjectWithTag ("Player").transform.position;
-			GameObject.FindGameObjectWithTag ("Clone").transform.position += diff;
-		}
+	//	if (GameObject.FindGameObjectWithTag ("Clone") != null) {
+	//		Vector3 diff = spawnPoint.transform.position - GameObject.FindGameObjectWithTag ("Player").transform.position;
+	//		GameObject.FindGameObjectWithTag ("Clone").transform.position += diff;
+	//	}
+
 		GameObject.FindGameObjectWithTag ("Player").transform.position = spawnPoint.transform.position;
 
+
+		if (GameObject.FindGameObjectWithTag ("Clone") != null) {
+			
+			GameObject.FindGameObjectWithTag ("Clone").transform.localPosition = GameObject.FindGameObjectWithTag ("Player").transform.localPosition;
+		}
 	}
 
 
