@@ -18,8 +18,6 @@ public class Gate : MonoBehaviour {
 	public string gateChannel;
 
 
-	[SerializeField]
-	float angle;
 
 	GameObject playerRef;
 	FirstPersonCharacterController controller;
@@ -51,8 +49,7 @@ public class Gate : MonoBehaviour {
 	}
 
 	public void CheckIllusion(float lookAngle){
-		//Debug.Log (lookAngle);
-		angle = lookAngle;
+
 
 		if (canBeDisabled) {
 			if (ReverseCase) {

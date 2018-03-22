@@ -12,6 +12,8 @@ public class FakeWall : MonoBehaviour {
 	public float MinAngle;//minimum y angle for camera to enable this portal
 	public float MaxAngle;
 	public float IdealAngle;
+	public bool ReverseCase;
+
 
 	public bool LookHelper;
 
@@ -37,25 +39,51 @@ public class FakeWall : MonoBehaviour {
 
 	public void CheckIllusion(float lookAngle){
 
-		if (lookAngle < MaxAngle && lookAngle > MinAngle) {
-			//if angle is correct, add to timer, 0.5 value/sec
-			if (angleTimer < 1) {
-				angleTimer += Time.deltaTime * 0.5f;
-			}
-			if (col.isTrigger == false) {
-				return;
+		if (ReverseCase) {
+			if (lookAngle < MaxAngle || lookAngle > MinAngle) {
+				//if angle is correct, add to timer, 0.5 value/sec
+				if (angleTimer < 1) {
+					angleTimer += Time.deltaTime * 0.5f;
+				}
+				if (col.isTrigger == false) {
+					return;
+				} else {
+					EnableCollision ();
+				}
 			} else {
-				EnableCollision ();
-			}
-		} else {
-			angleTimer = 0;
-			if (col.isTrigger == true) {
-				return;
-			} else {
-				DisableCollision ();
+				angleTimer = 0;
+				if (col.isTrigger == true) {
+					return;
+				} else {
+					DisableCollision ();
+				}
 			}
 		}
-	}
+		else{// normal case
+
+			if (lookAngle < MaxAngle && lookAngle > MinAngle) {
+				//if angle is correct, add to timer, 0.5 value/sec
+				if (angleTimer < 1) {
+					angleTimer += Time.deltaTime * 0.5f;
+				}
+				if (col.isTrigger == false) {
+					return;
+				} else {
+					EnableCollision ();
+				}
+			} else {
+				angleTimer = 0;
+				if (col.isTrigger == true) {
+					return;
+				} else {
+					DisableCollision ();
+					}
+				}
+			}
+		}
+		
+
+
 	void EnableCollision(){
 		col.isTrigger = false;
 		Debug.Log ("col+");

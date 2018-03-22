@@ -25,7 +25,7 @@ public class KillPlayerOnEnter : MonoBehaviour {
 		if (co.gameObject.CompareTag ("Player")) {//when collider with player
 			Debug.Log ("collid player, destroy: " + co.gameObject.name);
 		//	var splashLocation = co.gameObject.transform.position;
-			//splashLocation.y = ground.transform.position.y;
+			//splashLocation.y = ground.transform.positio n.y;
 			//var splashRotation = Quaternion.identity * Quaternion.Euler(90,0,0);
 
 			//printer.Print (splashLocation, splashRotation, ground.transform);
