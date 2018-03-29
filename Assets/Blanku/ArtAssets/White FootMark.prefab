@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114609577394644778}
   - component: {fileID: 114830235075849802}
   m_Layer: 0
-  m_Name: Glowing FootMark
+  m_Name: White FootMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

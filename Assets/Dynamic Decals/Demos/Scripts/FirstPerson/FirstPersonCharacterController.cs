@@ -188,6 +188,15 @@ using UnityEngine.Events;
 			}
 			*/
 
+		if(Input.GetMouseButtonDown(0)){
+			lookSensitivity = 0.2f;
+		}
+		if(Input.GetMouseButtonUp(0)){
+			lookSensitivity = 1f;
+		}
+
+
+
 		//Set velocity
 		attachedRigidbody.velocity = velocity;
 
@@ -289,5 +298,6 @@ using UnityEngine.Events;
 		//after updating the look angle, broadcast to all event listeners
 		m_lookAngleChangeEvent.Invoke (lookAngle);
 	}
+
     }
 
