@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: tile_blue
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: C2
+  m_Shader: {fileID: 4800000, guid: 60ec7c67fcdd03a4bb10a9ca1b4e1aae, type: 3}
   m_ShaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -50,16 +50,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _PaletteTex:
-        m_Texture: {fileID: 28000011798314710, guid: 2c65761bdf4d6f3439b3bead08063090,
-          type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _PatternTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -73,25 +64,18 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 0.6
-    - _Glossiness: 0.423
+    - _Glossiness: 0.487
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _PaletteColorCount: 7
-    - _PaletteHeight: 128
     - _Parallax: 0.02
-    - _PatternScale: 1
-    - _PatternSize: 8
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __hasPatternTex: 0
     m_Colors:
-    - _Color: {r: 0.20144896, g: 0.4488054, b: 0.5955882, a: 1}
-    - _EmissionColor: {r: 0.052822083, g: 0.14085889, b: 0.287, a: 1}
+    - _Color: {r: 0.40392157, g: 0.7411765, b: 0.27058825, a: 1}
+    - _EmissionColor: {r: 0.3137255, g: 0.05882353, b: 0.22352941, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - __paletteRef: {r: 3.260842e-12, g: -1.4803108e+19, b: 0.00034283605, a: 4.0381243e-34}
-    - __patternRef: {r: 0, g: 0, b: 0, a: 0}

@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: tile_red
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: A1
+  m_Shader: {fileID: 4800000, guid: 60ec7c67fcdd03a4bb10a9ca1b4e1aae, type: 3}
   m_ShaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -76,6 +76,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.7352941, b: 0.7352941, a: 1}
+    - _Color: {r: 0.8602941, g: 0.19609644, b: 0.73203504, a: 1}
     - _EmissionColor: {r: 0.479, g: 0.102493435, b: 0.102493435, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
