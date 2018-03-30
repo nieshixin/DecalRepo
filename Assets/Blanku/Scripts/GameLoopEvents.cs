@@ -11,6 +11,7 @@ public class GameLoopEvents : MonoBehaviour {
 	GameObject FadeObject;
 	Image FadeImage;
 
+	Text titleTxt;
 	void Start () {
 		instance = this;
 
@@ -22,7 +23,10 @@ public class GameLoopEvents : MonoBehaviour {
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<FirstPersonCharacterController> ().PlayerDied.AddListener (ResetPlayerPosition);
 		}
 
-		FadeBack (2f);
+		titleTxt = GameObject.Find ("TitleTxt").GetComponent<Text>();
+		iTween.ValueTo (titleTxt.gameObject,iTween.Hash("from", 1f, "to", 0f, "time", 8f, "onupdate", "TweenFadeTxt", "onupdatetarget", gameObject));
+
+		FadeBack (3.7f);
 	}
 	
 	// Update is called once per frame
@@ -37,6 +41,7 @@ public class GameLoopEvents : MonoBehaviour {
 	public void ResetPlayerPosition(){
 
 		//FadeInOut (0.5f);
+		if(FadeObject!= null)
 		iTween.ValueTo (FadeObject,iTween.Hash("from", 0f, "to", 1f, "time", 0.5f, "onupdate", "TweenFadeValue", "onupdatetarget", gameObject, "oncomplete", "FadeBack", "oncompletetarget", gameObject));
 
 		ResetPos ();
@@ -69,6 +74,10 @@ public class GameLoopEvents : MonoBehaviour {
 
 	void TweenFadeValue(float value){
 		FadeImage.color = new Color (0f,0f,0f,value);
+	}
+
+	void TweenFadeTxt(float value){
+		titleTxt.color = new Color (0f,0f,0f,value);
 	}
 
 	void FadeBack(){
