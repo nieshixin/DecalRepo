@@ -15,7 +15,7 @@ public class CloneMovement : MonoBehaviour
 		cloneRigi = GetComponent<Rigidbody> ();
 
 	}
-	void Update(){
+	void LateUpdate(){
 		cloneRigi.velocity = PlayerRigi.velocity;
 		//rotation
 		//transform.position = PlayerRigi.transform.position;
