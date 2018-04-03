@@ -20,6 +20,11 @@ public class FakeWall : MonoBehaviour {
 	[SerializeField]
 	float angleTimer;
 	// Use this for initialization
+
+	AudioSource clip;
+	bool alreadyDone;
+
+
 	void Start () {
 		col = gameObject.GetComponent<BoxCollider> ();
 
@@ -27,6 +32,8 @@ public class FakeWall : MonoBehaviour {
 		controller = playerRef.GetComponent<FirstPersonCharacterController> ();
 		//register the check function to the player, so everytime the player rotates the camera, this checks the illusion
 		controller.m_lookAngleChangeEvent.AddListener (CheckIllusion);
+
+		clip = GameObject.Find ("RightAngle").GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -42,7 +49,7 @@ public class FakeWall : MonoBehaviour {
 		if (ReverseCase) {
 			if (lookAngle < MaxAngle || lookAngle > MinAngle) {
 				//if angle is correct, add to timer, 0.5 value/sec
-				if (angleTimer < 1) {
+				if (angleTimer < 1 && !alreadyDone) {
 					angleTimer += Time.deltaTime * 0.5f;
 				}
 				if (col.isTrigger == false) {
@@ -52,6 +59,7 @@ public class FakeWall : MonoBehaviour {
 				}
 			} else {
 				angleTimer = 0;
+				alreadyDone = false;
 				if (col.isTrigger == true) {
 					return;
 				} else {
@@ -63,7 +71,7 @@ public class FakeWall : MonoBehaviour {
 
 			if (lookAngle < MaxAngle && lookAngle > MinAngle) {
 				//if angle is correct, add to timer, 0.5 value/sec
-				if (angleTimer < 1) {
+				if (angleTimer < 1 && !alreadyDone) {
 					angleTimer += Time.deltaTime * 0.5f;
 				}
 				if (col.isTrigger == false) {
@@ -73,6 +81,7 @@ public class FakeWall : MonoBehaviour {
 				}
 			} else {
 				angleTimer = 0;
+				alreadyDone = false;
 				if (col.isTrigger == true) {
 					return;
 				} else {
@@ -94,6 +103,10 @@ public class FakeWall : MonoBehaviour {
 	}
 
 	void CamToIdealAngle(){
+		if (clip != null) {
+			clip.Play ();
+		}
+		alreadyDone = true;
 
 		Debug.Log ("start ease");
 		angleTimer = 0f;

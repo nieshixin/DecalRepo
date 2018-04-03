@@ -16,7 +16,7 @@ public class FootStep : MonoBehaviour {
 
 	Rigidbody rigi;
 
-
+	AudioSource Foot_sound;
 
 	void Start () {
 		printer = GetComponent<Printer> ();
@@ -25,6 +25,11 @@ public class FootStep : MonoBehaviour {
 		//playerRef = GameObject.FindGameObjectWithTag("Player");
 		rigi = playerRef.GetComponentInChildren<Rigidbody>();
 
+		if (gameObject.name == "left Foot") {
+			Foot_sound = GameObject.Find ("footstep_L").GetComponent<AudioSource>();
+		} else if(gameObject.name == "right Foot"){
+			Foot_sound = GameObject.Find ("footstep_R").GetComponent<AudioSource>();
+		}
 
 	}
 	
@@ -72,6 +77,10 @@ public class FootStep : MonoBehaviour {
 		}
 
 		printer.Print (transform.position, rot, ground.transform);
+
+		if (Foot_sound != null) {
+			Foot_sound.Play ();
+		}
 	}
 
 	void OnEnable(){

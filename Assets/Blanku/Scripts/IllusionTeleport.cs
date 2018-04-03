@@ -25,12 +25,19 @@ public class IllusionTeleport : MonoBehaviour {
 	[SerializeField]
 	float angleTimer;
 	// Use this for initialization
+
+
+	AudioSource clip;
+	bool alreadyDone;
+
 	void Start () {
 
 		playerRef = GameObject.FindGameObjectWithTag("Player");
 		controller = playerRef.GetComponent<FirstPersonCharacterController> ();
 		//register the check function to the player, so everytime the player rotates the camera, this checks the illusion
 		controller.m_lookAngleChangeEvent.AddListener (CheckIllusion);
+
+		clip = GameObject.Find ("RightAngle").GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -52,7 +59,7 @@ public class IllusionTeleport : MonoBehaviour {
 
 		if (lookAngle < MaxAngle && lookAngle > MinAngle) {
 			//if angle is correct, add to timer, 0.5 value/sec
-			if (angleTimer < 1) {
+			if (angleTimer < 1 && !alreadyDone) {
 				angleTimer += Time.deltaTime * 0.5f;
 			}
 			if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
@@ -65,7 +72,7 @@ public class IllusionTeleport : MonoBehaviour {
 			}
 		} else {
 			angleTimer = 0;
-
+			alreadyDone = false;
 		}
 	}
 	void TeleportPlayer(){
@@ -79,7 +86,12 @@ public class IllusionTeleport : MonoBehaviour {
 	}
 
 	void CamToIdealAngle(){
-		
+		if (clip != null) {
+			clip.Play ();
+		}
+		alreadyDone = true;
+
+
 			Debug.Log ("start ease");
 			angleTimer = 0f;
 		controller.CamLock = true;
