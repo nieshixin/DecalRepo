@@ -23,8 +23,8 @@ public class CameraZoom : MonoBehaviour {
 		}
 		if (Input.GetAxis ("Mouse ScrollWheel") < 0)
 			cam.orthographicSize += speed;
-		if (cam.orthographicSize > 35)
-			cam.orthographicSize = 35;
+		if (cam.orthographicSize > 30)
+			cam.orthographicSize = 30;
 	}
 		/*
 		if (Input.GetAxis ("Mouse ScrollWheel")  >0) {
