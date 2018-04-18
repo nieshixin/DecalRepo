@@ -17,8 +17,14 @@ public class MovingPlatform : MonoBehaviour {
 
 	private bool hasMoved = false;
 	// Use this for initialization
+	AudioSource clip_1;
+	AudioSource clip_2;
+
 	void Start () {
-		
+
+		clip_1 = GameObject.Find ("DoorCome").GetComponent<AudioSource>();
+		clip_2 = GameObject.Find ("DoorGo").GetComponent<AudioSource>();
+
 		initialPos = transform.position;
 		if (destination == null) {
 			Debug.Log (gameObject.name + " has moving script and not assigned destination!");
@@ -55,6 +61,11 @@ public class MovingPlatform : MonoBehaviour {
 		initialPos = destination.position;
 		destination.position = exchange;
 
+		if (!hasMoved && clip_1 != null) {
+			clip_1.Play ();
+		} if (hasMoved && clip_2 != null) {
+			clip_2.Play ();
+		}
 	}
 
 	void DeadReset(){//if this has moved, run this when player died, this resets the platform

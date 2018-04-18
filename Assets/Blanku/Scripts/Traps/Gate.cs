@@ -33,6 +33,9 @@ public class Gate : MonoBehaviour {
 	[SerializeField]
 	float angleTimer;
 	// Use this for initialization
+
+
+
 	void Start () {
 		
 		playerRef = GameObject.FindGameObjectWithTag("Player");

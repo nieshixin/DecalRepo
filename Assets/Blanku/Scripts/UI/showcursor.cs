@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestroy : MonoBehaviour {
-
+public class showcursor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (GameObject.FindGameObjectsWithTag ("sound_M").Length < 2) {
-			DontDestroyOnLoad (gameObject);
-		}
 
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 	
 	// Update is called once per frame

@@ -6,6 +6,8 @@ using UnityEngine;
 public class gate1 : MonoBehaviour {
 	public Gate boss;
 	// Use this for initialization
+
+
 	void Start () {
 
 	}

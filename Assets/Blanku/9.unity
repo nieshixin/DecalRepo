@@ -6887,8 +6887,8 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   A: {fileID: 4665048}
   targetPoint: {fileID: 1798813703}
-  MinAngle: 263
-  MaxAngle: 269
+  MinAngle: 260.15
+  MaxAngle: 275.1
   IdealAngle: 266
   LookHelper: 1
   RequireTime: 1
@@ -13703,8 +13703,8 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   A: {fileID: 1626773624}
   targetPoint: {fileID: 2143698130}
-  MinAngle: 263
-  MaxAngle: 269
+  MinAngle: 260
+  MaxAngle: 275
   IdealAngle: 266
   LookHelper: 1
   RequireTime: 1
