@@ -55,10 +55,12 @@ public class GameLoopEvents : MonoBehaviour {
 
 		GameObject.FindGameObjectWithTag ("Player").transform.position = spawnPoint.transform.position;
 
-
-		if (GameObject.FindGameObjectWithTag ("Clone") != null) {
+		//reset clone pos
+		if (GameObject.FindGameObjectsWithTag ("Clone") != null) {
 			
-			GameObject.FindGameObjectWithTag ("Clone").transform.localPosition = GameObject.FindGameObjectWithTag ("Player").transform.localPosition;
+			foreach(GameObject go in GameObject.FindGameObjectsWithTag ("Clone")){
+			go.transform.localPosition = GameObject.FindGameObjectWithTag ("Player").transform.localPosition;
+			}
 		}
 	}
 

@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Blanku/11.unity
     guid: 7e1abf332eacc114d974f058acce8548
+  - enabled: 1
+    path: Assets/Blanku/12.unity
+    guid: 6ee9c3e385b7f9e43a33217fbafa496e

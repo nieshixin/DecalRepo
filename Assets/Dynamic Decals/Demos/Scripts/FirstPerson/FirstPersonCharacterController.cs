@@ -3,7 +3,7 @@ using System.Collections;
 
 using UnityEngine.Events;
 
-    [ExecuteInEditMode]
+
     public class FirstPersonCharacterController : MonoBehaviour
     {	
 
@@ -96,9 +96,14 @@ using UnityEngine.Events;
 	
         }
         private void Update()
-        {
+        {	
+			
             //Look Input
             lookDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+
+	
+
 		/*
 				if (Input.GetButtonDown ("RotateCamera") && !excuting) {
 					excuting = true;
@@ -143,6 +148,8 @@ using UnityEngine.Events;
             //Jump Input
             if (Input.GetKey(KeyCode.Space)) jumpInput = true;
             else jumpInput = false;
+
+
 
 			///////////////////////////////////////////////previously belongs to fixed update
 		//Update character rotation

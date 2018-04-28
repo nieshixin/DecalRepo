@@ -14,6 +14,8 @@ public class CloneMovement : MonoBehaviour
 		PlayerRigi = GameObject.FindGameObjectWithTag ("Player").GetComponentInChildren<Rigidbody> ();
 		cloneRigi = GetComponent<Rigidbody> ();
 
+		//register dead rest pos 
+
 	}
 	void LateUpdate(){
 		cloneRigi.velocity = PlayerRigi.velocity;
@@ -21,5 +23,7 @@ public class CloneMovement : MonoBehaviour
 		//transform.position = PlayerRigi.transform.position;
 		transform.rotation = PlayerRigi.transform.rotation;
 	}
+
+
 }
 
